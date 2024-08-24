@@ -1,4 +1,3 @@
-
 from flask import Flask, render_template, request, redirect, url_for, session, flash  # Include session here
 from flask_bcrypt import Bcrypt
 from models import db, User
@@ -91,14 +90,12 @@ def question(q_number):
 def profile():
     if 'user_id' not in session:
         return redirect(url_for('login'))
-    
+
     user_id = session['user_id']
     user = User.query.get(user_id)
     
-    if 'username' not in session:
-        session['username'] = user.username  
+    return render_template('profile.html', user=user, username=user.username)
 
-    return render_template('profile.html', user=user)
 
 @app.route('/events_list')
 def events_list():
@@ -191,4 +188,3 @@ print(f'HTML file generated: {output_html_path}')
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=5001, debug=True)
-
