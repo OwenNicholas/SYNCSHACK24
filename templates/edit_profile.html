@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Profile</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/edit_profile.css') }}"> 
-   <!--  <link rel="stylesheet" href='edit_profile.css'> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/edit_profile.css') }}">
 </head>
 <body>
 
@@ -14,49 +13,16 @@
         <h2>Edit Profile</h2>
         <span class="close-btn">&times;</span>
     </div>
-    <div class="profile-image-section">
-        <div class="profile-image">
-            <img src="https://via.placeholder.com/100" alt="Profile Image">
-        </div>
-        <button class="upload-btn">Upload</button>
-    </div>
 
-    <form class="profile-form">
-        <label for="nickname">Nickname</label>
-        <input type="text" id="nickname" name="nickname">
+    <form class="profile-form" method="POST" action="{{ url_for('edit_profile') }}">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" value="{{ username }}" required>
 
-        <label for="userid">User ID</label>
-        <input type="text" id="userid" name="userid" readonly>
-
-        <label for="birthday">Birthday</label>
-        <input type="date" id="birthday" name="birthday">
-
-        <label for="gender">Gender</label>
-        <select id="gender" name="gender">
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">Other</option>
-        </select>
-
-        <label for="major">Field of Study</label>
-        <select id="major" name="major">
-            <option value="architecture">Architecture, design and planning</option>
-            <option value="arts">Arts and social sciences</option>
-            <option value="business">Business</option>
-            <option value="economics">Economics</option>
-            <option value="education">Education and social work</option>
-            <option value="engineering">Engineering and computer science</option>
-            <option value="law">Law</option>
-            <option value="medicine">Medicine and health</option>
-            <option value="music">Music</option>
-            <option value="science">Science</option>
-        </select>
-
-        <label for="courses">Courses</label>
-        <input type="text" id="courses" name="courses" placeholder="Enter your courses">
+        <label for="description">Description</label>
+        <textarea id="description" name="description" placeholder="Enter a brief description about yourself" required>{{ description }}</textarea>
 
         <div class="form-buttons">
-            <button type="button" class="cancel-btn">Cancel</button>
+            <button type="button" class="cancel-btn" onclick="window.location.href='{{ url_for('profile') }}'">Cancel</button>
             <button type="submit" class="save-btn">Save</button>
         </div>
     </form>
@@ -64,4 +30,5 @@
 
 </body>
 </html>
+
 

@@ -173,11 +173,28 @@ def sign_out():
    return redirect(url_for('login'))
 
 
-@app.route('/edit_profile')
+@app.route('/edit_profile', methods=['GET', 'POST'])
 def edit_profile():
-   if 'user_id' not in session:
-       return redirect(url_for('login'))  # Check for session
-   return render_template('edit_profile.html')
+    if 'user_id' not in session:
+        return redirect(url_for('login')) 
+
+    user_id = session['user_id']
+    user = User.query.get(user_id)
+
+    if request.method == 'POST':
+        new_username = request.form['username']
+        new_description = request.form['description']
+
+        # Update the user's username and description
+        user.username = new_username
+        user.q5 = new_description
+        db.session.commit()
+
+        return redirect(url_for('profile'))
+
+    # Render the edit profile form with the current values
+    return render_template('edit_profile.html', username=user.username, description=user.q5)
+
 
 
 @app.route('/friends_list')
