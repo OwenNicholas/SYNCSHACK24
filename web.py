@@ -60,25 +60,25 @@ for card in events:
 
     title_h3 = card.find('h3', class_='EventCard-module--name--c1353')
     title = title_h3.get_text(strip=True)
-    #id
-    #title
-    #fdate
-    #fstart
-    #fend
-    #dow
+
+    allowed_characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}  ~"
+
+    filtered_characters = []
+
+    for char in title:
+        if char in allowed_characters:
+            filtered_characters.append(char)
+
+    result = ''.join(filtered_characters)
+
     id +=1
     sql = '''INSERT OR IGNORE INTO event (eventid, title, date, start, end, dow) 
             VALUES (?, ?, ?, ?, ?, ?);
             '''
-    cursor.execute(sql, (id,title,fdate, fstart, fend,dow ))
+    cursor.execute(sql, (id,result,fdate, fstart, fend,dow ))
 
 
-    print(id)
-    print(f"Title: {title}")
-    print(fdate)  
-    print(fstart) 
-    print(fend)
-    print(dow)
+
     print("-" * 40)
 conn.commit()
 conn.close()

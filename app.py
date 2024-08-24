@@ -2,6 +2,8 @@
 from flask import Flask, render_template, request, redirect, url_for, session  # Include session here
 from flask_bcrypt import Bcrypt
 from models import db, User
+import sqlite3
+from jinja2 import Environment, FileSystemLoader
 
 app = Flask(__name__)
 app.secret_key = 'f9c6254ef57f4bccfc7f9684566b615c' 
@@ -87,6 +89,24 @@ def question(q_number):
         return render_template(f'q{q_number}.html')
     except Exception:
         return "Question not found", 404
+
+db_path = 'instance/users.db'
+output_html_path = 'templates/event.html'
+
+conn = sqlite3.connect(db_path)
+cursor = conn.cursor()
+cursor.execute('SELECT * FROM event')
+events = cursor.fetchall()
+conn.close()
+
+env = Environment(loader=FileSystemLoader('templates'))
+template = env.get_template('event.html')
+html_content = template.render(events=events)
+
+with open(output_html_path, 'w') as file:
+    file.write(html_content)
+
+print(f'HTML file generated: {output_html_path}')
 
 if __name__ == '__main__':
     app.run(debug=True)
