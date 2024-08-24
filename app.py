@@ -214,16 +214,40 @@ def send_friend_request(receiver_id):
     if not current_user:
         return redirect(url_for('login'))
 
+    # Check if the current user has already sent a friend request to the receiver
     existing_request = FriendRequest.query.filter_by(sender_id=current_user.id, receiver_id=receiver_id).first()
-    if not existing_request:
-        new_request = FriendRequest(sender_id=current_user.id, receiver_id=receiver_id)
-        db.session.add(new_request)
+
+    # Check if there is a mutual pending friend request
+    mutual_request = FriendRequest.query.filter_by(sender_id=receiver_id, receiver_id=current_user.id, status='pending').first()
+
+    if mutual_request:
+        # If a mutual request exists, create a friendship
+        new_friendship = Friendship(user1_id=current_user.id, user2_id=receiver_id)
+        db.session.add(new_friendship)
+        
+        # Update both friend requests to 'accepted'
+        mutual_request.status = 'accepted'
+        if existing_request:
+            existing_request.status = 'accepted'
+        else:
+            # If current user hadn't sent a request, create one and set it as 'accepted'
+            existing_request = FriendRequest(sender_id=current_user.id, receiver_id=receiver_id, status='accepted')
+            db.session.add(existing_request)
+
         db.session.commit()
-        flash("Friend request sent!")
+        flash("You are now friends with the user!")
     else:
-        flash("Friend request already sent.")
-    
+        # If no mutual request, create a new pending friend request if it doesn't exist already
+        if not existing_request:
+            new_request = FriendRequest(sender_id=current_user.id, receiver_id=receiver_id, status='pending')
+            db.session.add(new_request)
+            db.session.commit()
+            flash("Friend request sent!")
+        else:
+            flash("Friend request already sent.")
+
     return redirect(url_for('friends_list', username=current_user.username))
+
 
 
 @app.route('/respond_friend_request/<int:request_id>/<response>')
