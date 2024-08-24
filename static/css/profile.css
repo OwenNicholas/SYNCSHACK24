@@ -1,12 +1,12 @@
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(to right, #0000FF, #7EC8E3);
+    background: linear-gradient(to right, #0000FF, #7EC8E3); /* Background gradient for the body */
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    color: #2C2B2C;
+    color: #2C2B2C; /* General text color */
 }
 
 .main-container {
@@ -30,75 +30,115 @@ body {
 }
 
 .profile-card, .info-card, .action-card {
-    background-color: #fff;
+    background-color: #fff; /* White background for cards */
     width: 100%; /* Make inner content fill the width of each section */
-    height: 100%; /* Ensure content fills the full height of each section */
     padding: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for cards */
     border-radius: 5px;
     text-align: center;
     display: flex; /* Use flexbox to center content */
     flex-direction: column; /* Stack content vertically */
     justify-content: center; /* Center content vertically */
     align-items: center; /* Center content horizontally */
+    margin-bottom: 20px; /* Space between cards */
 }
 
 .user-name {
-    font-size: 18px;
+    font-size: 22px; /* Larger font size */
     font-weight: bold;
     margin: 10px 0;
-    color: #2C2B2C;
+    color: #2C2B2C; /* Darker color for contrast */
 }
 
 .user-description {
-    font-size: 14px;
-    color: #666;
+    font-size: 16px; /* Slightly larger font size for readability */
+    color: #666; /* Subtle gray color */
     margin-bottom: 20px;
 }
 
 .profile-picture {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
+    width: 100px; /* Larger profile picture */
+    height: 100px;
+    border-radius: 50%; /* Circle shape */
     margin: 10px auto; /* Center the picture horizontally */
-    display: block; /* Ensure it's treated as a block element */
+    display: block; /* Block element for alignment */
 }
 
 .update-profile {
     display: block;
     width: 80%; /* Adjust width to ensure it doesn't touch the edges */
     padding: 10px;
-    background: linear-gradient(to right, #6a11cb, #2575cf);
-    color: white;
+    background: linear-gradient(to right, #6a11cb, #2575cf); /* Purple to blue gradient */
+    color: white; /* White text for contrast */
     text-align: center;
-    text-decoration: none;
-    border-radius: 5px;
+    text-decoration: none; /* Remove underline */
+    border-radius: 5px; /* Rounded corners */
     margin: 20px auto 0 auto; /* Center the button and add margin on top */
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .update-profile:hover {
-    background: linear-gradient(to right, #2575cf, #6a11cb);
-}
-
-.info-card h3, .info-card p {
-    margin: 10px 0;
-    text-align: left; /* Align text to the left within the info card */
-    color: #2C2B2C;
+    background: linear-gradient(to right, #2575cf, #6a11cb); /* Hover effect */
 }
 
 .action-button {
-    width: 100%;
-    height: 350px; /* Increased padding for taller buttons */
-    margin-bottom: 20px; /* More space between buttons */
-    background: linear-gradient(to right, #6a11cb, #2575cf);
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    font-size: 36px; /* Larger font size for more prominent text */
+    width: 100%; /* Full width */
+    height: 50px; /* Consistent height for buttons */
+    margin-bottom: 20px; /* Space between buttons */
+    background: linear-gradient(to right, #6a11cb, #2575cf); /* Gradient for buttons */
+    color: white; /* White text for contrast */
+    border: none; /* No border */
+    cursor: pointer; /* Pointer cursor for buttons */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth transition for hover */
+    font-size: 18px; /* Larger font size for buttons */
 }
 
 .action-button:hover {
-    background: linear-gradient(to right, #2575cf, #6a11cb);
+    background: linear-gradient(to right, #2575cf, #6a11cb); /* Gradient change on hover */
 }
+
+.info-section {
+    display: flex;
+    flex-direction: column; /* Stack child elements vertically */
+    align-items: stretch;
+    justify-content: flex-start;
+    flex: 2;
+    margin: 10px;
+    padding: 20px;
+    background-color: white; /* White background for consistency */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for sections */
+}
+
+.info-card {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f9f9f9; /* Light gray background for cards */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for cards */
+}
+
+.friend-request, .friends-list p, .joined-event {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 0; /* Padding for friend request, friends list, and joined events */
+}
+
+.accept-button, .decline-button {
+    background-color: #28a745; /* Green for accept */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px 10px;
+    margin: 0 5px;
+}
+
+.decline-button {
+    background-color: #dc3545; /* Red for decline */
+    color: white;
+}
+

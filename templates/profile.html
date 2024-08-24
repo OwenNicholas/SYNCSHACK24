@@ -11,34 +11,74 @@
         <!-- Left Section: User Profile -->
         <div class="profile-section">
             <div class="profile-card">
-                <img src="{{ url_for('static', filename='resources/user_icon.png') }}" alt="Profile Picture" class="profile-picture" style="width: 150px; height: 150px;">
-                <p class="user-name">{{ username }}</p> 
+                <img src="{{ url_for('static', filename='resources/user_icon.png') }}" alt="Profile Picture" class="profile-picture">
+                <p class="user-name">{{ username }}</p>
                 <p class="user-description">{{ description }}</p>
                 <a href="{{ url_for('edit_profile') }}" class="update-profile">Update Profile</a>
             </div>
         </div>
 
-        <!-- Profile Page - Joined Events Section -->
-    <div class="joined-events-section">
-        <h3>Joined Events</h3>
-        <table>
-            <tr>
-                <th>Title</th>
-                <th>Date</th>
-                <th>Start Time</th>
-                <th>End Time</th>
-            </tr>
-            {% for event in joined_events %}
-            <tr>
-                <td>{{ event.title }}</td>
-                <td>{{ event.date }}</td>
-                <td>{{ event.start }}</td>
-                <td>{{ event.end }}</td>
-            </tr>
-            {% endfor %}
-        </table>
-    </div>
+        <!-- Center Section: Friend Requests, My Friends, Joined Events -->
+        <div class="info-section">
+            <!-- Friend Requests -->
+            <div class="info-card">
+                <h2>Friend Requests</h2>
+                <div class="friend-requests-list">
+                    {% if friend_requests %}
+                        {% for request in friend_requests %}
+                            <div class="friend-request">
+                                <p>{{ request.sender.username }}</p>
+                                <button class="accept-button" onclick="window.location.href='{{ url_for('respond_friend_request', request_id=request.id, response='accept') }}'">Accept</button>
+                                <button class="decline-button" onclick="window.location.href='{{ url_for('respond_friend_request', request_id=request.id, response='decline') }}'">Decline</button>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p>No new friend requests.</p>
+                    {% endif %}
+                </div>
+            </div>
 
+            <!-- My Friends -->
+            <div class="info-card">
+                <h2>My Friends</h2>
+                <div class="friends-list">
+                    {% if friends %}
+                        {% for friend in friends %}
+                            <p>{{ friend.username }}</p>
+                        {% endfor %}
+                    {% else %}
+                        <p>No friends yet.</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Joined Events -->
+            <div class="info-card">
+                <h2>Joined Events</h2>
+                <div class="joined-events-list">
+                    {% if joined_events %}
+                        <table>
+                            <tr>
+                                <th>Title</th>
+                                <th>Date</th>
+                                <th>Start Time</th>
+                                <th>End Time</th>
+                            </tr>
+                            {% for event in joined_events %}
+                            <tr class="joined-event">
+                                <td>{{ event.title }}</td>
+                                <td>{{ event.date }}</td>
+                                <td>{{ event.start }}</td>
+                                <td>{{ event.end }}</td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    {% else %}
+                        <p>No events joined yet.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
 
         <!-- Right Section: Action Buttons -->
         <div class="action-section">
@@ -48,7 +88,8 @@
                 <a href="{{ url_for('sign_out') }}" class="action-button">Sign Out</a>
             </div>
         </div>
-        
     </div>
 </body>
 </html>
+
+
