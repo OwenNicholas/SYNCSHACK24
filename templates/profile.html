@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='edit_profile.css') }}"> >
+</head>
+<body>
+    <div class="main-container">
+        <!-- Left Section: User Profile -->
+        <div class="profile-section">
+            <div class="profile-card">
+                <img src="placeholder-profile.png" alt="Profile Picture" class="profile-picture">
+                <p class="user-name">Steven Smith</p>
+                <p class="user-description">A brief description about the user. Interests, major, etc.</p>
+                <a href="#" class="update-profile">Update Profile</a>
+            </div>
+        </div>
+
+        <!-- Center Section: Profile Information -->
+        <div class="info-section">
+            <div class="info-card">
+                <p><strong>Hobbies:</strong> Basketball</p>
+                <p><strong>Major:</strong> Data Science</p>
+                <p><strong>Degree:</strong> Bachelor of Science</p>
+            </div>
+        </div>
+
+        <!-- Right Section: Action Buttons -->
+        <div class="action-section">
+            <div class="action-card">
+                <button class="action-button">See Events</button>
+                <button class="action-button">Find Friends</button>
+                <button class="action-button">Sign Out</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

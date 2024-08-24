@@ -10,7 +10,7 @@ body {
     color: #333;
 }
 
-/* Container for the login box */
+/* Container for the login and sign-up box */
 .login-container {
     display: flex;
     justify-content: center;
@@ -19,7 +19,7 @@ body {
     height: 100%;
 }
 
-/* Login box styling */
+/* Login and Sign-up box styling */
 .login-box {
     background: white;
     padding: 30px;
@@ -74,8 +74,7 @@ h2 {
     background: linear-gradient(to right, #2575fc, #6a11cb);
 }
 
-
-/* Sign-up link */
+/* Sign-up/Log-in link */
 p {
     margin-top: 20px;
     color: #555;
