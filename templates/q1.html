@@ -7,7 +7,7 @@
 </head>
 <body>
     <!-- Ensure the form action dynamically directs to the next question using Flask routing -->
-    <form action="{{ url_for('question', q_number=2) }}" method="POST">
+    <form action="{{ url_for('question', q_number=1) }}" method="POST">
         <label for="ethnicity">What's your ethnicity?</label>
         <select id="ethnicity" name="answer" required>
             <option value="" disabled selected>Select your ethnicity</option>

@@ -57,24 +57,24 @@ def question(q_number):
     user = User.query.get(user_id)
 
     if request.method == 'POST':
-        answer = request.form.getlist('hobbies')  # Get list of selected hobbies
-        hobbies = ', '.join(answer)  # Join hobbies into a string
+        answer = request.form.get('answer')
+        print(f"Captured answer for question {q_number}: {answer}")
 
         if q_number == 1:
-            user.q1 = hobbies
+            user.q1 = answer
         elif q_number == 2:
-            user.q2 = hobbies
+            user.q2 = answer
         elif q_number == 3:
-            user.q3 = hobbies
+            user.q3 = answer
         elif q_number == 4:
-            user.q4 = hobbies  # Save the selected hobbies here
+            user.q4 = answer  
         elif q_number == 5:
-            user.q5 = hobbies
+            user.q5 = answer
         
         db.session.commit()
 
         if q_number < 5:
-            return redirect(url_for('question', q_number=q_number))
+            return redirect(url_for('question', q_number=q_number+1))
         else:
             return render_template('thank_you.html')  # Or another page after the last question
 
