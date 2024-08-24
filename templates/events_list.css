@@ -1,0 +1,107 @@
+/* Base styles for body */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #0000FF, #7EC8E3);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+}
+
+/* Container for the entire page */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff; /* White background for the container */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header section */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.month {
+    text-align: center;
+}
+
+.month-number {
+    font-size: 4em;
+    font-weight: bold;
+    color: #0000FF; /* Darker blue for the month number */
+}
+
+.month-text {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #7EC8E3; /* Lighter blue for the month text */
+}
+
+.title h1 {
+    font-size: 2em;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.title h1 span {
+    color: #ff9933;
+}
+
+.events-list {
+    margin-top: 30px;
+}
+
+/* Individual event entry */
+.event {
+    background-color: #0000FF; /* Darker blue background for each event */
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.date-label {
+    background: linear-gradient(to bottom, #0000FF, #7EC8E3);
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+    margin-right: 15px;
+    flex-basis: 20%;
+}
+
+.event-details h3 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #fff; /* White text for event titles */
+}
+
+.event-details p {
+    margin: 5px 0 0;
+    font-size: 0.9em;
+    color: #e0e0e0; /* Light gray text for event descriptions */
+}
+
+footer {
+    text-align: center;
+    margin-top: 30px;
+}
+
+footer p {
+    font-size: 0.9em;
+}
+
+footer a {
+    color: #ff9933;
+    text-decoration: none;
+}
