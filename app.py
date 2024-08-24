@@ -17,6 +17,8 @@ bcrypt = Bcrypt(app)
 with app.app_context():
     db.create_all()
 
+
+
 @app.route('/', methods=['GET', 'POST'])  # Use '/' for the login route
 def login():
     if request.method == 'POST':
@@ -28,9 +30,16 @@ def login():
             session['username'] = user.username  
             return redirect(url_for('profile'))  # Redirect to the profile page after login
         else:
-            error_message = 'Invalid username or password'  # Set error message if login fails
-            return render_template('index.html', error_message=error_message)  # Pass error message to template
-    return render_template('index.html')  # Render index.html for the login page
+            error_message = 'Invalid username or password'
+            return render_template('index.html', error_message=error_message)
+    return render_template('index.html')
+
+
+def get_current_user():
+    user_id = session.get('user_id')
+    if user_id:
+        return User.query.get(user_id)
+    return None
 
 
 @app.route('/signup', methods=['GET', 'POST'])
@@ -114,6 +123,7 @@ def profile():
         username=current_user.username, 
         user_description=current_user.q5
     )
+
 
 @app.route('/events_list')
 def events_list():

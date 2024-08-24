@@ -3,166 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Find Your Friends</title>
+    <title>Friends List</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/friends_list.css') }}">
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(to right, #0000FF, #7EC8E3);
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            color: #2C2B2C;
-        }
-
-        .header {
-            background-color: rgba(0, 0, 255, 0.8);
-            padding: 20px;
-            text-align: center;
-            font-size: 28px;
-            color: white;
-            width: 100%;
-            box-sizing: border-box;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-            border-radius: 5px;
-        }
-
-        .friend-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .friend {
-            flex: 1 1 calc(33.333% - 20px);
-            margin: 10px;
-            padding: 15px;
-            border-radius: 8px;
-            background-color: white;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-            transition: transform 0.2s, box-shadow 0.2s;
-            border: 2px solid rgba(0, 0, 255, 0.1);
-        }
-
-        .friend:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border: 2px solid rgba(0, 0, 255, 0.3);
-        }
-
-        .friend img {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            margin-right: 20px;
-        }
-
-        .friend-info {
-            flex-grow: 1;
-        }
-
-        .friend-info p {
-            margin: 5px 0;
-            color: #2C2B2C;
-            font-size: 16px;
-        }
-
-        .friend-info .match-rate {
-            font-weight: bold;
-            color: #0000FF;
-            font-size: 14px;
-        }
-
-        .friend-info .status {
-            color: #28a745;
-            font-size: 12px;
-        }
-
-        a {
-            text-decoration: none;
-            color: #0000FF;
-            font-weight: bold;
-            padding: 8px 16px;
-            background-color: #2575cf;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        a:hover {
-            background-color: #6a11cb;
-        }
-
-        /* New CSS for the match percentage bar */
-        .percentage-bar-container {
-            margin-top: 10px;
-            width: 100%;
-            background-color: #ddd;
-            border-radius: 5px;
-        }
-
-        .percentage-bar {
-            height: 8px;
-            border-radius: 5px;
-            background-color: #0000FF;
-        }
-
-        .suggestion {
-            background-color: #fff;
-            padding: 10px;
-            border-radius: 8px;
-            margin-top: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            color: #000;
-            text-align: center;
-        }
-
-        .suggestion a {
-            color: #0000FF;
-        }
-
-        .suggestion a:hover {
-            text-decoration: underline;
-        }
-
-        /* Add Friend Button Styles */
-        .action-button {
-            padding: 8px 16px;
-            background-color: #0000FF;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            font-weight: bold;
-        }
-
-        .action-button:hover {
-            background-color: #2575cf;
-        }
-
-        .requested {
-            background-color: #f0f0f0;
-            color: #0000FF;
-            cursor: default;
-            pointer-events: none;
-        }
-    </style>
 </head>
 <body>
+    <!-- Back Button -->
+    <a href="{{ url_for('profile') }}" class="back-button">Back</a>
+
     <div class="header">
         Find Your Friends
     </div>
+
     <div class="friend-list">
         {% for match in matches %}
         <div class="friend">
@@ -175,7 +26,6 @@
                 </div>
                 <p class="status">My Friend</p>
             </div>
-            <!-- Form to send friend request -->
             <form action="{{ url_for('send_friend_request', receiver_id=match.id) }}" method="post">
                 {% if match.requested %}
                     <button type="button" class="action-button requested" disabled>Requested</button>
@@ -185,18 +35,12 @@
             </form>
         </div>
         {% endfor %}
-    </div>    
+    </div>
 
     <div class="suggestion">
         <p>Looking for new friends?</p>
         <a href="#">Find People Nearby</a>
     </div>
-
-    <script>
-        function requestFriend(button) {
-            button.textContent = 'Requested';
-            button.classList.add('requested');
-        }
-    </script>
 </body>
 </html>
+
