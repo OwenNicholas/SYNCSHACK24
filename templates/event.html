@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+</head>
+<body>
+    <h1>Events</h1>
+
+    <!-- Form for date input -->
+    <form method="GET" action="/events">
+        <label for="event_date">Enter Date (YYYY-MM-DD):</label>
+        <input type="date" id="event_date" name="event_date" required>
+        <button type="submit">Filter</button>
+    </form>
+
+    <!-- Display events table -->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Day of Week</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>1</td>
+                <td>PRESS Proudly Presents: Post PhD Professional Panel (PPP PPPP)</td>
+                <td>2024-04-27</td>
+                <td>18:00</td>
+                <td>20:00</td>
+                <td>Saturday</td>
+            </tr>
+
+            <tr>
+                <td>2</td>
+                <td>MADSOC presents Semester 1 Welcome Drinks</td>
+                <td>2024-03-02</td>
+                <td>17:00</td>
+                <td>19:00</td>
+                <td>Saturday</td>
+            </tr>
+
+            <tr>
+                <td>3</td>
+                <td>Sums Study Session</td>
+                <td>2024-11-09</td>
+                <td>16:00</td>
+                <td>22:00</td>
+                <td>Saturday</td>
+            </tr>
+
+            <tr>
+                <td>4</td>
+                <td>Singing Rehursals  Friday</td>
+                <td>2024-08-30</td>
+                <td>18:00</td>
+                <td>20:00</td>
+                <td>Friday</td>
+            </tr>
+
+            <tr>
+                <td>5</td>
+                <td>Get Apple TV+ for FREE when you subscribe to an Apple Music Student Plan</td>
+                <td>2024-09-29</td>
+                <td>09:00</td>
+                <td>17:00</td>
+                <td>Sunday</td>
+            </tr>
+
+            <tr>
+                <td>6</td>
+                <td>Upgrade to Rewards and get a $50 We Wander voucher!</td>
+                <td>2024-12-31</td>
+                <td>09:00</td>
+                <td>23:59</td>
+                <td>Tuesday</td>
+            </tr>
+
+            <tr>
+                <td>7</td>
+                <td>Beer of the Month: Byron Bay Brewery</td>
+                <td>2024-08-31</td>
+                <td>09:00</td>
+                <td>23:59</td>
+                <td>Saturday</td>
+            </tr>
+
+            <tr>
+                <td>8</td>
+                <td>Popping with Marco</td>
+                <td>2024-10-11</td>
+                <td>19:00</td>
+                <td>20:00</td>
+                <td>Friday</td>
+            </tr>
+
+            <tr>
+                <td>9</td>
+                <td>Choreo with Ellen</td>
+                <td>2024-10-31</td>
+                <td>14:00</td>
+                <td>15:00</td>
+                <td>Thursday</td>
+            </tr>
+
+            <tr>
+                <td>10</td>
+                <td>Waacking with Veegee</td>
+                <td>2024-10-26</td>
+                <td>15:00</td>
+                <td>16:00</td>
+                <td>Saturday</td>
+            </tr>
+
+            <tr>
+                <td>11</td>
+                <td>Locking with Weilong</td>
+                <td>2024-10-31</td>
+                <td>16:00</td>
+                <td>17:00</td>
+                <td>Thursday</td>
+            </tr>
+
+            <tr>
+                <td>12</td>
+                <td>Stephs Choreography Weekly Class</td>
+                <td>2024-08-29</td>
+                <td>13:00</td>
+                <td>14:00</td>
+                <td>Thursday</td>
+            </tr>
+
+            <tr>
+                <td>13</td>
+                <td>SOW USYD Weekly Meetings</td>
+                <td>2024-09-10</td>
+                <td>17:00</td>
+                <td>19:00</td>
+                <td>Tuesday</td>
+            </tr>
+
+            <tr>
+                <td>14</td>
+                <td>Power to Change Family Dinner</td>
+                <td>2024-10-22</td>
+                <td>17:00</td>
+                <td>19:00</td>
+                <td>Tuesday</td>
+            </tr>
+
+            <tr>
+                <td>15</td>
+                <td>Vaishvis Bollypop Weekly Class</td>
+                <td>2024-10-13</td>
+                <td>15:00</td>
+                <td>16:00</td>
+                <td>Sunday</td>
+            </tr>
+
+            <tr>
+                <td>16</td>
+                <td>SXP Jam</td>
+                <td>2024-10-31</td>
+                <td>16:00</td>
+                <td>17:00</td>
+                <td>Thursday</td>
+            </tr>
+
+            <tr>
+                <td>17</td>
+                <td>USYD Puzzlesoc Games Night</td>
+                <td>2024-10-29</td>
+                <td>18:00</td>
+                <td>20:00</td>
+                <td>Tuesday</td>
+            </tr>
+
+            <tr>
+                <td>18</td>
+                <td>SUCESs Fortnightly BBQ</td>
+                <td>2024-10-28</td>
+                <td>12:30</td>
+                <td>14:00</td>
+                <td>Monday</td>
+            </tr>
+
+            <tr>
+                <td>19</td>
+                <td>Wednesday Social Run</td>
+                <td>2024-10-30</td>
+                <td>17:00</td>
+                <td>19:00</td>
+                <td>Wednesday</td>
+            </tr>
+
+            <tr>
+                <td>20</td>
+                <td>Priyanshis Weekly Class</td>
+                <td>2024-10-13</td>
+                <td>15:00</td>
+                <td>16:00</td>
+                <td>Sunday</td>
+            </tr>
+
+            <tr>
+                <td>21</td>
+                <td>Cards against SUAnime</td>
+                <td>2024-10-23</td>
+                <td>12:30</td>
+                <td>14:30</td>
+                <td>Wednesday</td>
+            </tr>
+
+            <tr>
+                <td>22</td>
+                <td>Arts and Sciences Semester 2</td>
+                <td>2024-11-20</td>
+                <td>17:00</td>
+                <td>19:00</td>
+                <td>Wednesday</td>
+            </tr>
+
+            <tr>
+                <td>23</td>
+                <td>Piano soc weekly jam session</td>
+                <td>2024-08-29</td>
+                <td>15:30</td>
+                <td>16:00</td>
+                <td>Thursday</td>
+            </tr>
+
+            <tr>
+                <td>24</td>
+                <td>Weekly Mahjong Meetup</td>
+                <td>2024-10-24</td>
+                <td>16:00</td>
+                <td>18:00</td>
+                <td>Thursday</td>
+            </tr>
+
+            <tr>
+                <td>25</td>
+                <td>Nats K-Pop</td>
+                <td>2024-10-13</td>
+                <td>16:00</td>
+                <td>17:00</td>
+                <td>Sunday</td>
+            </tr>
+
+            <tr>
+                <td>26</td>
+                <td>Ebonys Contemporary Weekly Class</td>
+                <td>2024-10-13</td>
+                <td>11:00</td>
+                <td>12:00</td>
+                <td>Sunday</td>
+            </tr>
+
+            <tr>
+                <td>27</td>
+                <td>Lunch Gathering x Ukuelele Workshop p.1  2024 S2</td>
+                <td>2024-09-29</td>
+                <td>12:30</td>
+                <td>14:00</td>
+                <td>Sunday</td>
+            </tr>
+
+            <tr>
+                <td>28</td>
+                <td>Weekly Friday Social Climb</td>
+                <td>2024-11-08</td>
+                <td>17:00</td>
+                <td>22:00</td>
+                <td>Friday</td>
+            </tr>
+
+            <tr>
+                <td>29</td>
+                <td>Day Trips Semester 2</td>
+                <td>2024-09-06</td>
+                <td>07:30</td>
+                <td>21:00</td>
+                <td>Friday</td>
+            </tr>
+
+            <tr>
+                <td>30</td>
+                <td>Friday Quadball Training at Victoria Park (New Members Welcome!)</td>
+                <td>2024-08-02</td>
+                <td>15:00</td>
+                <td>17:00</td>
+                <td>Friday</td>
+            </tr>
+
+            <tr>
+                <td>31</td>
+                <td>Friday Pizza and Games</td>
+                <td>2024-09-27</td>
+                <td>17:00</td>
+                <td>21:00</td>
+                <td>Friday</td>
+            </tr>
+
+            <tr>
+                <td>32</td>
+                <td>Girls Choreo with Sanami</td>
+                <td>2024-10-25</td>
+                <td>16:00</td>
+                <td>17:00</td>
+                <td>Friday</td>
+            </tr>
+
+            <tr>
+                <td>33</td>
+                <td>WASABI Snacks and Chill</td>
+                <td>2024-10-17</td>
+                <td>13:00</td>
+                <td>16:00</td>
+                <td>Thursday</td>
+            </tr>
+
+            <tr>
+                <td>34</td>
+                <td>Weekly Monday Casual Climbs</td>
+                <td>2024-11-04</td>
+                <td>17:00</td>
+                <td>22:00</td>
+                <td>Monday</td>
+            </tr>
+
+            <tr>
+                <td>35</td>
+                <td>FREE Weekly Events: Sem 2 2024</td>
+                <td>2024-10-31</td>
+                <td>12:00</td>
+                <td>20:00</td>
+                <td>Thursday</td>
+            </tr>
+
+            <tr>
+                <td>36</td>
+                <td>Power to Change Monday Bible Study</td>
+                <td>2024-10-28</td>
+                <td>12:00</td>
+                <td>13:00</td>
+                <td>Monday</td>
+            </tr>
+
+            <tr>
+                <td>37</td>
+                <td>Drawmeet</td>
+                <td>2024-10-28</td>
+                <td>14:00</td>
+                <td>16:00</td>
+                <td>Monday</td>
+            </tr>
+
+            <tr>
+                <td>38</td>
+                <td>Yoga with Megan</td>
+                <td>2024-09-16</td>
+                <td>09:30</td>
+                <td>10:30</td>
+                <td>Monday</td>
+            </tr>
+
+            <tr>
+                <td>39</td>
+                <td>Hip Hop with Sonja</td>
+                <td>2024-10-20</td>
+                <td>16:00</td>
+                <td>17:00</td>
+                <td>Sunday</td>
+            </tr>
+
+            <tr>
+                <td>40</td>
+                <td>Weekly Bible Study  Exploring Spiritual Practices</td>
+                <td>2024-11-19</td>
+                <td>13:00</td>
+                <td>14:00</td>
+                <td>Tuesday</td>
+            </tr>
+
+            <tr>
+                <td>41</td>
+                <td>Tight Tuesdays with Broadway Sydney!</td>
+                <td>2024-08-27</td>
+                <td>11:00</td>
+                <td>21:00</td>
+                <td>Tuesday</td>
+            </tr>
+
+            <tr>
+                <td>42</td>
+                <td>Power to Change Tuesday Bible Study</td>
+                <td>2024-10-29</td>
+                <td>12:00</td>
+                <td>13:00</td>
+                <td>Tuesday</td>
+            </tr>
+
+            <tr>
+                <td>43</td>
+                <td>Madrigal Society Weekly Rehearsals</td>
+                <td>2024-12-10</td>
+                <td>17:00</td>
+                <td>19:00</td>
+                <td>Tuesday</td>
+            </tr>
+
+            <tr>
+                <td>44</td>
+                <td>Semester 2 Intersociety Futsal Tournament</td>
+                <td>2024-10-31</td>
+                <td>13:30</td>
+                <td>15:30</td>
+                <td>Thursday</td>
+            </tr>
+
+            <tr>
+                <td>45</td>
+                <td>GDay Gatherings Sem 2</td>
+                <td>2024-10-22</td>
+                <td>13:30</td>
+                <td>15:00</td>
+                <td>Tuesday</td>
+            </tr>
+
+            <tr>
+                <td>46</td>
+                <td>SUMS Weekly Maths Talk</td>
+                <td>2024-10-29</td>
+                <td>12:00</td>
+                <td>13:00</td>
+                <td>Tuesday</td>
+            </tr>
+
+            <tr>
+                <td>47</td>
+                <td>Spanish Conversation Group</td>
+                <td>2024-10-30</td>
+                <td>12:00</td>
+                <td>14:00</td>
+                <td>Wednesday</td>
+            </tr>
+
+            <tr>
+                <td>48</td>
+                <td>Weekly Meetups</td>
+                <td>2024-10-30</td>
+                <td>13:00</td>
+                <td>16:00</td>
+                <td>Wednesday</td>
+            </tr>
+
+            <tr>
+                <td>49</td>
+                <td>WASABI Japanese Language Workshop</td>
+                <td>2024-11-06</td>
+                <td>17:00</td>
+                <td>18:00</td>
+                <td>Wednesday</td>
+            </tr>
+
+            <tr>
+                <td>50</td>
+                <td>Reading and Writing Room / Book Chats</td>
+                <td>2024-10-23</td>
+                <td>13:00</td>
+                <td>15:00</td>
+                <td>Wednesday</td>
+            </tr>
+
+            <tr>
+                <td>51</td>
+                <td>SignSoc Wednesday Rehearsals</td>
+                <td>2024-09-25</td>
+                <td>17:00</td>
+                <td>19:00</td>
+                <td>Wednesday</td>
+            </tr>
+
+            <tr>
+                <td>52</td>
+                <td>USU Markets Sem 2</td>
+                <td>2024-10-09</td>
+                <td>09:00</td>
+                <td>16:00</td>
+                <td>Wednesday</td>
+            </tr>
+
+            <tr>
+                <td>53</td>
+                <td>Yoga Class (Changing teachers)</td>
+                <td>2024-10-31</td>
+                <td>16:00</td>
+                <td>17:00</td>
+                <td>Thursday</td>
+            </tr>
+
+            <tr>
+                <td>54</td>
+                <td>Thursday Jams</td>
+                <td>2024-10-17</td>
+                <td>12:00</td>
+                <td>14:00</td>
+                <td>Thursday</td>
+            </tr>
+
+            <tr>
+                <td>55</td>
+                <td>Tabletop RPG Thursdays</td>
+                <td>2024-10-10</td>
+                <td>17:00</td>
+                <td>20:30</td>
+                <td>Thursday</td>
+            </tr>
+
+            <tr>
+                <td>56</td>
+                <td>SignSoc Thursday Classes</td>
+                <td>2024-08-28</td>
+                <td>17:00</td>
+                <td>19:00</td>
+                <td>Wednesday</td>
+            </tr>
+
+            <tr>
+                <td>57</td>
+                <td>Score a FREE Bacardi bucket hat at Someday Soon</td>
+                <td>2024-09-18</td>
+                <td>18:00</td>
+                <td>23:00</td>
+                <td>Wednesday</td>
+            </tr>
+
+            <tr>
+                <td>58</td>
+                <td>Weekly Meeting</td>
+                <td>2024-10-29</td>
+                <td>15:00</td>
+                <td>17:00</td>
+                <td>Tuesday</td>
+            </tr>
+
+            <tr>
+                <td>59</td>
+                <td>Breaking with Kid Tek</td>
+                <td>2024-10-29</td>
+                <td>17:00</td>
+                <td>18:00</td>
+                <td>Tuesday</td>
+            </tr>
+
+            <tr>
+                <td>60</td>
+                <td>Wednesday Wisdom / Apologetics at CathSoc!</td>
+                <td>2024-10-23</td>
+                <td>14:00</td>
+                <td>15:00</td>
+                <td>Wednesday</td>
+            </tr>
+
+            <tr>
+                <td>61</td>
+                <td>Crochet Weeklies</td>
+                <td>2024-10-30</td>
+                <td>15:00</td>
+                <td>18:00</td>
+                <td>Wednesday</td>
+            </tr>
+
+            <tr>
+                <td>62</td>
+                <td>SUDS Presents: BIN NIGHT</td>
+                <td>2024-08-24</td>
+                <td>19:00</td>
+                <td>21:00</td>
+                <td>Saturday</td>
+            </tr>
+
+            <tr>
+                <td>63</td>
+                <td>Women In Real Estate Mentoring</td>
+                <td>2024-08-30</td>
+                <td>09:00</td>
+                <td>21:00</td>
+                <td>Friday</td>
+            </tr>
+
+            <tr>
+                <td>64</td>
+                <td>Yoga with Tali</td>
+                <td>2024-10-29</td>
+                <td>12:00</td>
+                <td>13:00</td>
+                <td>Tuesday</td>
+            </tr>
+
+            <tr>
+                <td>65</td>
+                <td>USQC at Canberra NQL</td>
+                <td>2024-08-25</td>
+                <td>09:00</td>
+                <td>21:00</td>
+                <td>Sunday</td>
+            </tr>
+
+            <tr>
+                <td>66</td>
+                <td>ViSUS Coastal Walk & Picnic Day</td>
+                <td>2024-08-24</td>
+                <td>10:30</td>
+                <td>14:00</td>
+                <td>Saturday</td>
+            </tr>
+
+            <tr>
+                <td>67</td>
+                <td>Union Made: Art from the University of Sydney Union</td>
+                <td>2024-07-01</td>
+                <td>10:00</td>
+                <td>17:00</td>
+                <td>Monday</td>
+            </tr>
+
+            <tr>
+                <td>68</td>
+                <td>Hwa Tsang Monastery Visit</td>
+                <td>2024-08-24</td>
+                <td>09:30</td>
+                <td>14:00</td>
+                <td>Saturday</td>
+            </tr>
+
+            <tr>
+                <td>69</td>
+                <td>Hwa Tsang Monastery Visit</td>
+                <td>2024-08-24</td>
+                <td>09:30</td>
+                <td>14:00</td>
+                <td>Saturday</td>
+            </tr>
+
+            <tr>
+                <td>70</td>
+                <td>SUIIS Analyst Training Program Week 2</td>
+                <td>2024-08-24</td>
+                <td>11:00</td>
+                <td>15:00</td>
+                <td>Saturday</td>
+            </tr>
+
+            <tr>
+                <td>71</td>
+                <td>Reformed Evangelical Fellowship Annual General Meeting</td>
+                <td>2024-08-24</td>
+                <td>16:30</td>
+                <td>17:30</td>
+                <td>Saturday</td>
+            </tr>
+
+            <tr>
+                <td>72</td>
+                <td>180DC TM Training Day</td>
+                <td>2024-08-24</td>
+                <td>10:00</td>
+                <td>14:00</td>
+                <td>Saturday</td>
+            </tr>
+
+            <tr>
+                <td>73</td>
+                <td>[SUCE X CBE PGSC] Sydney Water Discovery Centre Tour!</td>
+                <td>2024-08-25</td>
+                <td>09:00</td>
+                <td>13:00</td>
+                <td>Sunday</td>
+            </tr>
+
+            <tr>
+                <td>74</td>
+                <td>Build club 0.2</td>
+                <td>2024-08-26</td>
+                <td>18:30</td>
+                <td>19:30</td>
+                <td>Monday</td>
+            </tr>
+
+            <tr>
+                <td>75</td>
+                <td>Puzzle Society Trivia Decathlon</td>
+                <td>2024-08-27</td>
+                <td>18:00</td>
+                <td>21:00</td>
+                <td>Tuesday</td>
+            </tr>
+
+            <tr>
+                <td>76</td>
+                <td>Calligraphy Workshop (27th August)</td>
+                <td>2024-08-27</td>
+                <td>13:00</td>
+                <td>14:00</td>
+                <td>Tuesday</td>
+            </tr>
+
+            <tr>
+                <td>77</td>
+                <td>Jacaranda Stock Market Society Annual General Meeting</td>
+                <td>2024-08-27</td>
+                <td>19:30</td>
+                <td>20:30</td>
+                <td>Tuesday</td>
+            </tr>
+
+            <tr>
+                <td>78</td>
+                <td>Society of Medical Innovation Annual General Meeting</td>
+                <td>2024-08-27</td>
+                <td>15:00</td>
+                <td>16:30</td>
+                <td>Tuesday</td>
+            </tr>
+
+            <tr>
+                <td>79</td>
+                <td>Games Night </td>
+                <td>2024-08-27</td>
+                <td>16:30</td>
+                <td>18:00</td>
+                <td>Tuesday</td>
+            </tr>
+
+            <tr>
+                <td>80</td>
+                <td>Puzzle Society Trivia Night</td>
+                <td>2024-08-27</td>
+                <td>18:00</td>
+                <td>21:00</td>
+                <td>Tuesday</td>
+            </tr>
+
+            <tr>
+                <td>81</td>
+                <td>PMSoc Brekkie By The Barbie</td>
+                <td>2024-08-28</td>
+                <td>10:00</td>
+                <td>12:00</td>
+                <td>Wednesday</td>
+            </tr>
+
+            <tr>
+                <td>82</td>
+                <td>SUBAA Picnic Day</td>
+                <td>2024-08-28</td>
+                <td>12:00</td>
+                <td>14:00</td>
+                <td>Wednesday</td>
+            </tr>
+
+            <tr>
+                <td>83</td>
+                <td>ACYA-SUMahjong Collab Mahjong Event</td>
+                <td>2024-08-28</td>
+                <td>16:00</td>
+                <td>18:00</td>
+                <td>Wednesday</td>
+            </tr>
+
+            <tr>
+                <td>84</td>
+                <td>Writers Workshop with Tommy Murphy</td>
+                <td>2024-08-28</td>
+                <td>17:00</td>
+                <td>19:00</td>
+                <td>Wednesday</td>
+            </tr>
+
+            <tr>
+                <td>85</td>
+                <td>PMSoc General Meeting 28/08/2024</td>
+                <td>2024-08-28</td>
+                <td>20:00</td>
+                <td>20:30</td>
+                <td>Wednesday</td>
+            </tr>
+
+            <tr>
+                <td>86</td>
+                <td>Gaius Gracchus Annual General Meeting</td>
+                <td>2024-08-28</td>
+                <td>16:00</td>
+                <td>17:00</td>
+                <td>Wednesday</td>
+            </tr>
+
+            <tr>
+                <td>87</td>
+                <td>ChocSoc Games Night</td>
+                <td>2024-08-29</td>
+                <td>18:00</td>
+                <td>20:00</td>
+                <td>Thursday</td>
+            </tr>
+
+            <tr>
+                <td>88</td>
+                <td>SABS Meet and Greet</td>
+                <td>2024-08-29</td>
+                <td>13:00</td>
+                <td>15:00</td>
+                <td>Thursday</td>
+            </tr>
+
+            <tr>
+                <td>89</td>
+                <td>Calligraphy Workshop (29th August)</td>
+                <td>2024-08-29</td>
+                <td>13:00</td>
+                <td>14:00</td>
+                <td>Thursday</td>
+            </tr>
+
+            <tr>
+                <td>90</td>
+                <td>Italian Society General Meeting</td>
+                <td>2024-08-29</td>
+                <td>18:30</td>
+                <td>19:30</td>
+                <td>Thursday</td>
+            </tr>
+
+            <tr>
+                <td>91</td>
+                <td>Kinetic Kickoff!</td>
+                <td>2024-08-29</td>
+                <td>10:00</td>
+                <td>12:00</td>
+                <td>Thursday</td>
+            </tr>
+
+            <tr>
+                <td>92</td>
+                <td>Night Market Flames: WASABI x CS x VSA</td>
+                <td>2024-08-29</td>
+                <td>16:00</td>
+                <td>18:00</td>
+                <td>Thursday</td>
+            </tr>
+
+            <tr>
+                <td>93</td>
+                <td>Italian Society General Meeting</td>
+                <td>2024-08-29</td>
+                <td>18:30</td>
+                <td>20:30</td>
+                <td>Thursday</td>
+            </tr>
+
+            <tr>
+                <td>94</td>
+                <td>Astronomy Society Annual General Meeting</td>
+                <td>2024-08-29</td>
+                <td>18:00</td>
+                <td>20:00</td>
+                <td>Thursday</td>
+            </tr>
+
+            <tr>
+                <td>95</td>
+                <td>SUMO Annual General Meeting</td>
+                <td>2024-08-29</td>
+                <td>11:00</td>
+                <td>12:00</td>
+                <td>Thursday</td>
+            </tr>
+
+            <tr>
+                <td>96</td>
+                <td>Women in Real Estate Evening</td>
+                <td>2024-08-29</td>
+                <td>18:30</td>
+                <td>20:30</td>
+                <td>Thursday</td>
+            </tr>
+
+            <tr>
+                <td>97</td>
+                <td>SparkSoc Annual General Meeting</td>
+                <td>2024-08-29</td>
+                <td>11:30</td>
+                <td>12:30</td>
+                <td>Thursday</td>
+            </tr>
+
+            <tr>
+                <td>98</td>
+                <td>A Friends Discussion Dinner</td>
+                <td>2024-08-29</td>
+                <td>17:30</td>
+                <td>20:00</td>
+                <td>Thursday</td>
+            </tr>
+
+            <tr>
+                <td>99</td>
+                <td>180 Degrees Consulting Annual General Meeting</td>
+                <td>2024-08-29</td>
+                <td>19:00</td>
+                <td>20:30</td>
+                <td>Thursday</td>
+            </tr>
+
+            <tr>
+                <td>100</td>
+                <td>Trivia Nights at Manning Bar</td>
+                <td>2024-10-17</td>
+                <td>18:00</td>
+                <td>22:00</td>
+                <td>Thursday</td>
+            </tr>
+
+            <tr>
+                <td>101</td>
+                <td>Casual gathering fridays</td>
+                <td>2024-10-04</td>
+                <td>11:00</td>
+                <td>13:00</td>
+                <td>Friday</td>
+            </tr>
+
+            <tr>
+                <td>102</td>
+                <td>SPAAMAZING RACE</td>
+                <td>2024-08-30</td>
+                <td>17:30</td>
+                <td>19:30</td>
+                <td>Friday</td>
+            </tr>
+
+            <tr>
+                <td>103</td>
+                <td>Cathsoc X SOFIA: Football Match + Dinner</td>
+                <td>2024-08-30</td>
+                <td>17:30</td>
+                <td>21:30</td>
+                <td>Friday</td>
+            </tr>
+
+            <tr>
+                <td>104</td>
+                <td>Book Society General Meeting</td>
+                <td>2024-08-30</td>
+                <td>17:00</td>
+                <td>18:00</td>
+                <td>Friday</td>
+            </tr>
+
+            <tr>
+                <td>105</td>
+                <td>Cat Society Annual General Meeting</td>
+                <td>2024-08-30</td>
+                <td>16:00</td>
+                <td>17:30</td>
+                <td>Friday</td>
+            </tr>
+
+            <tr>
+                <td>106</td>
+                <td>Pizza & Paint  </td>
+                <td>2024-08-30</td>
+                <td>17:00</td>
+                <td>19:30</td>
+                <td>Friday</td>
+            </tr>
+
+            <tr>
+                <td>107</td>
+                <td>SOFIA vs Catholic Society Soccer Game</td>
+                <td>2024-08-30</td>
+                <td>17:30</td>
+                <td>21:30</td>
+                <td>Friday</td>
+            </tr>
+
+            <tr>
+                <td>108</td>
+                <td>Werewolf night</td>
+                <td>2024-08-30</td>
+                <td>16:00</td>
+                <td>20:00</td>
+                <td>Friday</td>
+            </tr>
+
+            <tr>
+                <td>109</td>
+                <td>Werewolf night</td>
+                <td>2024-08-30</td>
+                <td>17:00</td>
+                <td>19:00</td>
+                <td>Friday</td>
+            </tr>
+
+            <tr>
+                <td>110</td>
+                <td>Wear it Purple Party 2024</td>
+                <td>2024-08-30</td>
+                <td>17:00</td>
+                <td>21:00</td>
+                <td>Friday</td>
+            </tr>
+
+            <tr>
+                <td>111</td>
+                <td>Friday Jams</td>
+                <td>2024-08-30</td>
+                <td>16:00</td>
+                <td>18:00</td>
+                <td>Friday</td>
+            </tr>
+
+            <tr>
+                <td>112</td>
+                <td>SUIIS Analyst Training Program Week 3</td>
+                <td>2024-08-31</td>
+                <td>11:00</td>
+                <td>15:00</td>
+                <td>Saturday</td>
+            </tr>
+
+            <tr>
+                <td>113</td>
+                <td>Philsoc General Meeting</td>
+                <td>2024-09-03</td>
+                <td>17:00</td>
+                <td>18:00</td>
+                <td>Tuesday</td>
+            </tr>
+
+            <tr>
+                <td>114</td>
+                <td>Chai and Chat</td>
+                <td>2024-09-04</td>
+                <td>15:00</td>
+                <td>17:00</td>
+                <td>Wednesday</td>
+            </tr>
+
+            <tr>
+                <td>115</td>
+                <td>USU 150: Manning House Culture Tour</td>
+                <td>2024-09-04</td>
+                <td>14:30</td>
+                <td>16:00</td>
+                <td>Wednesday</td>
+            </tr>
+
+            <tr>
+                <td>116</td>
+                <td>September Crafternoon Tea 1</td>
+                <td>2024-09-04</td>
+                <td>15:00</td>
+                <td>17:00</td>
+                <td>Wednesday</td>
+            </tr>
+
+            <tr>
+                <td>117</td>
+                <td>Calligraphy Society Annual General Meeting</td>
+                <td>2024-09-05</td>
+                <td>13:00</td>
+                <td>15:00</td>
+                <td>Thursday</td>
+            </tr>
+
+            <tr>
+                <td>118</td>
+                <td>Formula Racing Society Inaugural General Meeting</td>
+                <td>2024-09-05</td>
+                <td>15:00</td>
+                <td>16:00</td>
+                <td>Thursday</td>
+            </tr>
+
+            <tr>
+                <td>119</td>
+                <td>Ice Cream Society Inaugural General Meeting</td>
+                <td>2024-09-05</td>
+                <td>16:00</td>
+                <td>18:00</td>
+                <td>Thursday</td>
+            </tr>
+
+            <tr>
+                <td>120</td>
+                <td>SignSoc Wednesday Rehearsals</td>
+                <td>2024-09-26</td>
+                <td>17:00</td>
+                <td>19:00</td>
+                <td>Thursday</td>
+            </tr>
+
+            <tr>
+                <td>121</td>
+                <td>Sydney University Nepali Society Inaugural General Meeting</td>
+                <td>2024-09-06</td>
+                <td>18:30</td>
+                <td>19:30</td>
+                <td>Friday</td>
+            </tr>
+
+            <tr>
+                <td>122</td>
+                <td>The Texas hold em Society Inaugural General Meeting</td>
+                <td>2024-09-06</td>
+                <td>12:30</td>
+                <td>14:30</td>
+                <td>Friday</td>
+            </tr>
+
+            <tr>
+                <td>123</td>
+                <td>Stephs Choreography Weekly Class</td>
+                <td>2024-10-13</td>
+                <td>12:00</td>
+                <td>13:00</td>
+                <td>Sunday</td>
+            </tr>
+
+            <tr>
+                <td>124</td>
+                <td>Eleanors Yoga and Pilates Weekly Class</td>
+                <td>2024-10-13</td>
+                <td>14:00</td>
+                <td>15:00</td>
+                <td>Sunday</td>
+            </tr>
+
+            <tr>
+                <td>125</td>
+                <td>Stephs Choreography Weekly Class</td>
+                <td>2024-10-13</td>
+                <td>13:00</td>
+                <td>14:00</td>
+                <td>Sunday</td>
+            </tr>
+
+            <tr>
+                <td>126</td>
+                <td>The Sports Episode</td>
+                <td>2024-09-08</td>
+                <td>11:00</td>
+                <td>14:00</td>
+                <td>Sunday</td>
+            </tr>
+
+            <tr>
+                <td>127</td>
+                <td>Build club 0.3</td>
+                <td>2024-09-09</td>
+                <td>18:30</td>
+                <td>19:30</td>
+                <td>Monday</td>
+            </tr>
+
+            <tr>
+                <td>128</td>
+                <td>USU 150: Holme Building Culture Tour</td>
+                <td>2024-09-11</td>
+                <td>14:30</td>
+                <td>16:00</td>
+                <td>Wednesday</td>
+            </tr>
+
+            <tr>
+                <td>129</td>
+                <td>Someday Soon: Emei, William Singe & J Tajor</td>
+                <td>2024-09-18</td>
+                <td>18:00</td>
+                <td>23:00</td>
+                <td>Wednesday</td>
+            </tr>
+
+            <tr>
+                <td>130</td>
+                <td>Med Revue Post Show Celebration</td>
+                <td>2024-09-21</td>
+                <td>21:30</td>
+                <td>23:30</td>
+                <td>Saturday</td>
+            </tr>
+
+            <tr>
+                <td>131</td>
+                <td>SMS The Makeup of Branding Event</td>
+                <td>2024-09-22</td>
+                <td>18:30</td>
+                <td>20:30</td>
+                <td>Sunday</td>
+            </tr>
+
+            <tr>
+                <td>132</td>
+                <td>End of class celebration</td>
+                <td>2024-09-26</td>
+                <td>18:00</td>
+                <td>19:00</td>
+                <td>Thursday</td>
+            </tr>
+
+            <tr>
+                <td>133</td>
+                <td>Cuneiform workshop</td>
+                <td>2024-09-25</td>
+                <td>16:00</td>
+                <td>18:00</td>
+                <td>Wednesday</td>
+            </tr>
+
+            <tr>
+                <td>134</td>
+                <td>September Crafternoon Tea 2</td>
+                <td>2024-09-27</td>
+                <td>15:00</td>
+                <td>17:00</td>
+                <td>Friday</td>
+            </tr>
+
+            <tr>
+                <td>135</td>
+                <td>Competitive Kitties</td>
+                <td>2024-10-05</td>
+                <td>15:00</td>
+                <td>20:00</td>
+                <td>Saturday</td>
+            </tr>
+
+            <tr>
+                <td>136</td>
+                <td>Lunch Gathering x Ukulele Workshop p.2 2024</td>
+                <td>2024-11-21</td>
+                <td>12:30</td>
+                <td>14:00</td>
+                <td>Thursday</td>
+            </tr>
+
+            <tr>
+                <td>137</td>
+                <td>USYD Puzzlesoc Movie Night</td>
+                <td>2024-10-24</td>
+                <td>18:00</td>
+                <td>20:30</td>
+                <td>Thursday</td>
+            </tr>
+
+            <tr>
+                <td>138</td>
+                <td>Feast of St Ursula 2024</td>
+                <td>2024-10-26</td>
+                <td>14:00</td>
+                <td>22:00</td>
+                <td>Saturday</td>
+            </tr>
+
+            <tr>
+                <td>139</td>
+                <td>Weekly Jam Session</td>
+                <td>2024-10-29</td>
+                <td>13:00</td>
+                <td>15:00</td>
+                <td>Tuesday</td>
+            </tr>
+
+            <tr>
+                <td>140</td>
+                <td>November Crafternoon Tea</td>
+                <td>2024-11-01</td>
+                <td>15:00</td>
+                <td>17:00</td>
+                <td>Friday</td>
+            </tr>
+
+            <tr>
+                <td>141</td>
+                <td>Diwali 2024</td>
+                <td>2024-11-02</td>
+                <td>19:00</td>
+                <td>23:00</td>
+                <td>Saturday</td>
+            </tr>
+
+            <tr>
+                <td>142</td>
+                <td>Intro to R Talk</td>
+                <td>2024-02-26</td>
+                <td>12:00</td>
+                <td>14:00</td>
+                <td>Monday</td>
+            </tr>
+
+        </tbody>
+    </table>
+</body>
+</html>

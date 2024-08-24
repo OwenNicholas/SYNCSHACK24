@@ -3,6 +3,9 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 from flask_bcrypt import Bcrypt
 from models import db, User
 
+import sqlite3
+from jinja2 import Environment, FileSystemLoader
+
 app = Flask(__name__)
 app.secret_key = 'f9c6254ef57f4bccfc7f9684566b615c' 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
@@ -23,6 +26,7 @@ def login():
         user = User.query.filter_by(username=username).first()
         if user and bcrypt.check_password_hash(user.password, password):
             session['user_id'] = user.id
+            session['username'] = user.username  
             return redirect(url_for('profile'))  # Redirect to the profile page after login
         else:
             error_message = 'Invalid username or password'  # Set error message if login fails
@@ -86,11 +90,14 @@ def question(q_number):
 @app.route('/profile')
 def profile():
     if 'user_id' not in session:
-        return redirect(url_for('login'))  # Ensure user is logged in
+        return redirect(url_for('login'))
     
     user_id = session['user_id']
     user = User.query.get(user_id)
     
+    if 'username' not in session:
+        session['username'] = user.username  
+
     return render_template('profile.html', user=user)
 
 @app.route('/events_list')
@@ -105,27 +112,15 @@ def sign_out():
 
 @app.route('/edit_profile')
 def edit_profile():
+    if 'user_id' not in session:
+        return redirect(url_for('login'))  # Check for session
     return render_template('edit_profile.html')
 
-@app.route('/some_route')
+@app.route('/friends_list')
 def some_function():
     # Correctly generate the URL with the 'username' parameter
     return redirect(url_for('friends_list', username='some_username'))
 
-
-
-class User(db.Model):
-    __tablename__ = 'user'
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(100), nullable=False)
-    password = db.Column(db.String(255), nullable=False)
-    q1 = db.Column(db.String(100))
-    q2 = db.Column(db.String(100))
-    q3 = db.Column(db.String(100))
-    q4 = db.Column(db.String(100))
-    q5 = db.Column(db.String(100))
-
-    __table_args__ = {'extend_existing': True}
 
 def calculate_match(user1, user2):
     match_count = 0
@@ -170,8 +165,30 @@ def friends_list(username):
     return render_template('friends_list.html', matches=matches, username=username)
 
 
+'''
+db_path = 'instance/users.db'
+output_html_path = 'templates/event.html'
+
+conn = sqlite3.connect(db_path)
+cursor = conn.cursor()
+cursor.execute('SELECT * FROM event')
+events = cursor.fetchall()
+conn.close()
+
+env = Environment(loader=FileSystemLoader('templates'))
+template = env.get_template('event.html')
+html_content = template.render(events=events)
+
+with open(output_html_path, 'w') as file:
+    file.write(html_content)
+
+
+print(f'HTML file generated: {output_html_path}')
+'''
+
+
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='127.0.0.1', port=5001, debug=True)
 

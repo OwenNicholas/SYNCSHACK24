@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+</head>
+<body>
+    <h1>Events</h1>
+
+    <!-- Form for date input -->
+    <form method="GET" action="/events">
+        <label for="event_date">Enter Date (YYYY-MM-DD):</label>
+        <input type="date" id="event_date" name="event_date" required>
+        <button type="submit">Filter</button>
+    </form>
+
+    <!-- Display events table -->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Day of Week</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for event in events %}
+            <tr>
+                <td>{{ event[0] }}</td>
+                <td>{{ event[1] }}</td>
+                <td>{{ event[2] }}</td>
+                <td>{{ event[3] }}</td>
+                <td>{{ event[4] }}</td>
+                <td>{{ event[5] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
