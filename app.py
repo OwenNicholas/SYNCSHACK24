@@ -76,7 +76,7 @@ def question(q_number):
         if q_number < 5:
             return redirect(url_for('question', q_number=q_number+1))
         else:
-            return render_template('thank_you.html')  # Or another page after the last question
+            return render_template('profile.html')  # Or another page after the last question
 
     try:
         return render_template(f'q{q_number}.html')
