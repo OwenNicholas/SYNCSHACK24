@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -73,26 +73,13 @@
         Find Your Friends
     </div>
     <div class="friend-list">
+        {% for match in matches %}
         <div class="friend">
-            <p>Friend Name: Alice</p>
-            <p>Match Rate: <span class="match-rate">80%</span></p>
+            <p>Friend Name: {{ match.username }}</p>
+            <p>Match Rate: <span class="match-rate">{{ match.match_percentage }}%</span></p>
             <a href="#">View Profile</a>
         </div>
-        <div class="friend">
-            <p>Friend Name: Bob</p>
-            <p>Match Rate: <span class="match-rate">75%</span></p>
-            <a href="#">View Profile</a>
-        </div>
-        <div class="friend">
-            <p>Friend Name: Charlie</p>
-            <p>Match Rate: <span class="match-rate">90%</span></p>
-            <a href="#">View Profile</a>
-        </div>
-        <div class="friend">
-            <p>Friend Name: Dana</p>
-            <p>Match Rate: <span class="match-rate">85%</span></p>
-            <a href="#">View Profile</a>
-        </div>
+        {% endfor %}
     </div>
 </body>
 </html>
