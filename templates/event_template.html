@@ -4,9 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events</title>
-    <link rel="stylesheet" href="static/css/event.css"}">
+    <link rel="stylesheet" href="static/css/event.css">
+    <style>
+        /* Basic styling for buttons */
+        .join-button {
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+        .join-button.join {
+            background-color: #007bff; /* Blue for "Join" */
+        }
+        .join-button.joined {
+            background-color: #0056b3; /* Darker Blue for "Joined" */
+        }
+    </style>
 </head>
 <body>
+    <!-- Back Button -->
+    <a href="{{ url_for('profile') }}" class="action-button">Back</a>
     <h1>Events</h1>
 
     <!-- Form for date input -->
@@ -26,6 +48,7 @@
                 <th>Start Time</th>
                 <th>End Time</th>
                 <th>Day of Week</th>
+                <th>Action</th> <!-- New column for button -->
             </tr>
         </thead>
         <tbody>
@@ -37,9 +60,174 @@
                 <td>{{ event[3] }}</td>
                 <td>{{ event[4] }}</td>
                 <td>{{ event[5] }}</td>
+                <td>
+                    <button class="join-button join" onclick="toggleJoin(this)">Join</button>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+
+    <script>
+        function toggleJoin(button) {
+            if (button.innerText === 'Join') {
+                button.innerText = 'Joined';
+                button.classList.remove('join');
+                button.classList.add('joined');
+                // Optionally send an AJAX request to update the server
+                // var row = button.closest('tr');
+                // var eventId = row.cells[0].innerText;
+                // fetch('/join_event', {
+                //     method: 'POST',
+                //     headers: { 'Content-Type': 'application/json' },
+                //     body: JSON.stringify({ id: eventId })
+                // });
+            } else {
+                button.innerText = 'Join';
+                button.classList.remove('joined');
+                button.classList.add('join');
+                // Optionally send an AJAX request to update the server
+                // var row = button.closest('tr');
+                // var eventId = row.cells[0].innerText;
+                // fetch('/leave_event', {
+                //     method: 'POST',
+                //     headers: { 'Content-Type': 'application/json' },
+                //     body: JSON.stringify({ id: eventId })
+                // });
+            }
+        }
+    </script>
+</body>
+</html>
+Explanation:
+CSS Changes:
+
+.join-button.join: Sets the button color to #007bff (light blue) for the "Join" state.
+.join-button.joined: Sets the button color to #0056b3 (darker blue) for the "Joined" state.
+JavaScript Changes:
+
+The toggleJoin function now switches between the join and joined classes based on the button's current text. This toggles the button's color between the two specified shades of blue.
+With these updates, the button color will change according to its state, providing a visual cue to the user.
+
+
+
+You said:
+I think green and red is a better version, and make the button the same length like " join " and "joined"
+ChatGPT said:
+ChatGPT
+If you'd prefer to use green and red for the button states and ensure the button maintains the same width regardless of its text, you can update the styles and adjust the HTML and CSS accordingly. Here’s how you can modify the code:
+
+CSS: Set fixed button dimensions to ensure consistency and apply green and red colors.
+
+JavaScript: Ensure the button updates its state and maintains the same width.
+
+Here’s the updated code:
+
+html
+Copy code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <link rel="stylesheet" href="static/css/event.css">
+    <style>
+        /* Basic styling for buttons */
+        .join-button {
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            width: 100px; /* Set a fixed width for consistency */
+            text-align: center;
+        }
+        .join-button.join {
+            background-color: #28a745; /* Green for "Join" */
+        }
+        .join-button.joined {
+            background-color: #dc3545; /* Red for "Joined" */
+        }
+    </style>
+</head>
+<body>
+    <!-- Back Button -->
+    <a href="{{ url_for('profile') }}" class="action-button">Back</a>
+    <h1>Events</h1>
+
+    <!-- Form for date input -->
+    <form method="GET" action="/events">
+        <label for="event_date">Enter Date (YYYY-MM-DD):</label>
+        <input type="date" id="event_date" name="event_date" required>
+        <button type="submit">Filter</button>
+    </form>
+
+    <!-- Display events table -->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Day of Week</th>
+                <th>Action</th> <!-- New column for button -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for event in events %}
+            <tr>
+                <td>{{ event[0] }}</td>
+                <td>{{ event[1] }}</td>
+                <td>{{ event[2] }}</td>
+                <td>{{ event[3] }}</td>
+                <td>{{ event[4] }}</td>
+                <td>{{ event[5] }}</td>
+                <td>
+                    <button class="join-button join" onclick="toggleJoin(this)">Join</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script>
+        function toggleJoin(button) {
+            const eventId = button.getAttribute('data-event-id');
+
+            if (button.innerText === 'Join') {
+                button.innerText = 'Joined';
+                button.classList.remove('join');
+                button.classList.add('joined');
+
+                // Create and submit the form
+                const form = document.createElement('form');
+                form.method = 'POST';
+                const eventk = event[0];
+                const url = `{{ url_for('join', eventk) }}`;
+                form.action = `${url}/${eventk[0]}`;
+                form.action = "{{ url_for('join', eventk[0]) }}";
+
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'event_id';
+                input.value = eventId;
+
+                form.appendChild(input);
+                document.body.appendChild(form);
+                form.submit();
+            } else {
+                button.innerText = 'Join';
+                button.classList.remove('joined');
+                button.classList.add('join');
+            }
+        }
+    </script>
 </body>
 </html>

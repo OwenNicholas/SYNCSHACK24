@@ -89,3 +89,40 @@ tbody tr:nth-child(even) {
 tbody tr:hover {
     background-color: #f1f1f1;
 }
+
+/* Basic reset for button styling */
+.action-button {
+    display: inline-block;
+    padding: 10px 20px; /* Adjust the padding to increase/decrease button size */
+    font-size: 16px; /* Adjust font size as needed */
+    color: #ffffff; /* Text color */
+    background-color: #007bff; /* Background color */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* Remove underline from link */
+    text-align: center; /* Center text */
+    cursor: pointer; /* Change cursor to pointer */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover effect */
+.action-button:hover {
+    background-color: #0056b3; /* Darker background color on hover */
+}
+
+/* Focus effect (for accessibility) */
+.action-button:focus {
+    outline: 2px solid #0056b3; /* Outline color matching hover color */
+    outline-offset: 2px; /* Space between the outline and the button */
+}
+
+/* Optional: Add a box shadow for a more pronounced button effect */
+.action-button {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow with subtle blur */
+}
+
+.action-button:active {
+    background-color: #004085; /* Even darker color when button is pressed */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Slightly smaller shadow when active */
+    transform: translateY(2px); /* Button moves down slightly when pressed */
+}

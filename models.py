@@ -11,6 +11,7 @@ class User(db.Model):
     q3 = db.Column(db.String(150))
     q4 = db.Column(db.String(150))
     q5 = db.Column(db.String(150))
+    events = db.Column(db.Text)
 
 
 
