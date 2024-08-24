@@ -73,12 +73,6 @@ for card in events:
     cursor.execute(sql, (id,title,fdate, fstart, fend,dow ))
 
 
-    print(id)
-    print(f"Title: {title}")
-    print(fdate)  
-    print(fstart) 
-    print(fend)
-    print(dow)
-    print("-" * 40)
+
 conn.commit()
 conn.close()
