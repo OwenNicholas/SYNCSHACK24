@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ideal Weekend Question</title>
+</head>
+<body>
+    <h2>What does your ideal weekend look like?</h2>
+    <form action="{{ url_for('question', q_number=4) }}" method="POST">
+        <label for="ideal_weekend">Choose one:</label><br><br>
+        
+        <!-- List of ideal weekend options with radio buttons -->
+        <input type="radio" id="exploring" name="answer" value="Exploring new places" required>
+        <label for="exploring">Exploring new places or going on adventures</label><br>
+
+        <input type="radio" id="relaxing_home" name="answer" value="Relaxing at home">
+        <label for="relaxing_home">Relaxing at home with a good book or movie</label><br>
+
+        <input type="radio" id="socializing" name="answer" value="Spending time with friends and family">
+        <label for="socializing">Spending time with friends and family</label><br>
+
+        <input type="radio" id="active" name="answer" value="Engaging in physical activities">
+        <label for="active">Engaging in physical activities like sports or hiking</label><br>
+
+        <input type="radio" id="culture" name="answer" value="Attending cultural events">
+        <label for="culture">Attending cultural events like concerts, theaters, or art exhibitions</label><br>
+
+        <input type="radio" id="gardening" name="answer" value="Gardening or DIY projects">
+        <label for="gardening">Gardening or working on DIY projects at home</label><br>
+
+        <input type="radio" id="gaming" name="answer" value="Gaming or technology projects">
+        <label for="gaming">Playing video games or working on technology projects</label><br>
+
+        <input type="radio" id="traveling" name="answer" value="Weekend getaway">
+        <label for="traveling">Going on a weekend getaway or short trip</label><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Field of Study Question</title>
+</head>
+<body>
+    <form action="{{ url_for('question', q_number=2) }}" method="POST">
+        <label for="field_of_study">What's your field of study?</label>
+        <select id="field_of_study" name="answer" required>
+            <option value="" disabled selected>Select your field of study</option>
+            <!-- Grouped fields of study -->
+            <option value="Arts and Humanities">Arts and Humanities</option>
+            <option value="Business and Economics">Business and Economics</option>
+            <option value="Computer Science and Information Technology">Computer Science and Information Technology</option>
+            <option value="Engineering and Technology">Engineering and Technology</option>
+            <option value="Health and Medicine">Health and Medicine</option>
+            <option value="Law and Social Sciences">Law and Social Sciences</option>
+            <option value="Natural Sciences">Natural Sciences</option>
+            <option value="Education and Teaching">Education and Teaching</option>
+            <option value="Architecture and Design">Architecture and Design</option>
+            <option value="Environmental and Agricultural Sciences">Environmental and Agricultural Sciences</option>
+            <option value="Media and Communication">Media and Communication</option>
+            <option value="Performing Arts and Music">Performing Arts and Music</option>
+            <option value="Psychology and Behavioral Sciences">Psychology and Behavioral Sciences</option>
+            <option value="Other">Other</option>
+        </select>
+        <br><br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
