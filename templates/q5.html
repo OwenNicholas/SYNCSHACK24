@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Self-Description Question</title>
+</head>
+<body>
+    <h2>Write a sentence about yourself:</h2>
+    <form action="{{ url_for('question', q_number=6) }}" method="POST">
+        <label for="self_description">Tell us something about you:</label><br><br>
+        
+        <!-- Text area for self-description -->
+        <textarea id="self_description" name="self_description" rows="4" cols="50" placeholder="Write a sentence about yourself..." required></textarea><br><br>
+        
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

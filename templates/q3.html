@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity Description Question</title>
+</head>
+<body>
+    <h2>Which activity most describes you?</h2>
+    <form action="{{ url_for('question', q_number=4) }}" method="POST">
+        <label for="activity">Choose one:</label><br><br>
+        
+        <!-- List of activity options with radio buttons -->
+        <input type="radio" id="gaming" name="activity" value="Gaming" required>
+        <label for="gaming">Gaming</label><br>
+
+        <input type="radio" id="sports" name="activity" value="Playing Sports">
+        <label for="sports">Playing Sports</label><br>
+
+        <input type="radio" id="couch_potato" name="activity" value="Couch Potato">
+        <label for="couch_potato">Couch Potato</label><br>
+
+        <input type="radio" id="reading" name="activity" value="Reading Books">
+        <label for="reading">Reading Books</label><br>
+
+        <input type="radio" id="traveling" name="activity" value="Traveling">
+        <label for="traveling">Traveling</label><br>
+
+        <input type="radio" id="music" name="activity" value="Listening to Music">
+        <label for="music">Listening to Music</label><br>
+
+        <input type="radio" id="cooking" name="activity" value="Cooking">
+        <label for="cooking">Cooking</label><br>
+
+        <input type="radio" id="art" name="activity" value="Creating Art">
+        <label for="art">Creating Art</label><br>
+
+        <input type="radio" id="socializing" name="activity" value="Socializing with Friends">
+        <label for="socializing">Socializing with Friends</label><br>
+
+        <input type="radio" id="fitness" name="activity" value="Fitness and Gym">
+        <label for="fitness">Fitness and Gym</label><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
