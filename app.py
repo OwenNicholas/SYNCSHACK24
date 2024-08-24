@@ -95,10 +95,8 @@ def profile():
     user_id = session['user_id']
     user = User.query.get(user_id)
     
-    if 'username' not in session:
-        session['username'] = user.username  
+    return render_template('profile.html', username=user.username, description=user.q5)
 
-    return render_template('profile.html', user=user)
 
 @app.route('/events_list')
 def events_list():

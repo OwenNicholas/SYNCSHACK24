@@ -11,9 +11,9 @@
         <!-- Left Section: User Profile -->
         <div class="profile-section">
             <div class="profile-card">
-                <img src="placeholder-profile.png" alt="Profile Picture" class="profile-picture">
-                <p class="user-name">Steven Smith</p>
-                <p class="user-description">A brief description about the user. Interests, major, etc.</p>
+                <img src="{{ url_for('static', filename='resources/user_icon.png') }}" alt="Profile Picture" class="profile-picture" style="width: 150px; height: 150px;">
+                <p class="user-name">{{ username }}</p> 
+                <p class="user-description">{{ description }}</p>
                 <a href="{{ url_for('edit_profile') }}" class="update-profile">Update Profile</a>
             </div>
         </div>
