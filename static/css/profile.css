@@ -1,0 +1,104 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #0000FF, #7EC8E3);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #2C2B2C;
+}
+
+.main-container {
+    display: flex;
+    justify-content: space-around; /* Distribute space evenly */
+    align-items: flex-start; /* Align items to the top */
+    padding: 20px;
+    height: 80vh; /* Reduced height to allow space around */
+    width: 90vw; /* Set width to take up most of the viewport width */
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.1); /* Light background for separation */
+    border-radius: 10px; /* Rounded corners for the main container */
+}
+
+.profile-section, .info-section, .action-section {
+    flex: 1; /* Each section takes up an equal share of available width */
+    max-width: 30%; /* Limit the maximum width of each section */
+    margin: 10px; /* Space around each section */
+    height: 100%; /* Make each section the same height as the main container */
+    box-sizing: border-box;
+}
+
+.profile-card, .info-card, .action-card {
+    background-color: #fff;
+    width: 100%; /* Make inner content fill the width of each section */
+    height: 100%; /* Ensure content fills the full height of each section */
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    text-align: center;
+    display: flex; /* Use flexbox to center content */
+    flex-direction: column; /* Stack content vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+}
+
+.user-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #2C2B2C;
+}
+
+.user-description {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.profile-picture {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 10px auto; /* Center the picture horizontally */
+    display: block; /* Ensure it's treated as a block element */
+}
+
+.update-profile {
+    display: block;
+    width: 80%; /* Adjust width to ensure it doesn't touch the edges */
+    padding: 10px;
+    background: linear-gradient(to right, #6a11cb, #2575cf);
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 20px auto 0 auto; /* Center the button and add margin on top */
+}
+
+.update-profile:hover {
+    background: linear-gradient(to right, #2575cf, #6a11cb);
+}
+
+.info-card h3, .info-card p {
+    margin: 10px 0;
+    text-align: left; /* Align text to the left within the info card */
+    color: #2C2B2C;
+}
+
+.action-button {
+    width: 100%;
+    height: 350px; /* Increased padding for taller buttons */
+    margin-bottom: 20px; /* More space between buttons */
+    background: linear-gradient(to right, #6a11cb, #2575cf);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-size: 36px; /* Larger font size for more prominent text */
+}
+
+.action-button:hover {
+    background: linear-gradient(to right, #2575cf, #6a11cb);
+}
