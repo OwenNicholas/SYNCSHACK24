@@ -1,8 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash  # Include session here
 from flask_bcrypt import Bcrypt
-from models import db, User
+from models import db, User, UserEvent
 import sqlite3
 import os
+from datetime import datetime, date, time
 
 import requests
 from bs4 import BeautifulSoup
@@ -107,16 +108,16 @@ def question(q_number):
 
 @app.route('/profile')
 def profile():
-   if 'user_id' not in session:
-       return redirect(url_for('login'))
-  
-   user_id = session['user_id']
-   user = User.query.get(user_id)
-  
-   return render_template('profile.html', username=user.username, description=user.q5)
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
 
+    user_id = session['user_id']
+    user = User.query.get(user_id)
 
+    # Fetch the joined events using the relationship defined in the User model
+    joined_events = UserEvent.query.filter_by(user_id=user_id).all()
 
+    return render_template('profile.html', username=user.username, description=user.q5, joined_events=joined_events)
 
 @app.route('/events_list')
 def events_list():
@@ -124,11 +125,13 @@ def events_list():
 
 @app.route('/events', methods=['GET'])
 def events():
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+
+    user_id = session['user_id']
+
     # Get the date from the query parameter
     filter_date = request.args.get('event_date')  # Ensure parameter name matches HTML form
-
-    # Print the filter date for debugging purposes
-    #print(f"Filter date received: {filter_date}")
 
     # Connect to the database
     db_path = os.path.abspath(os.path.join('instance', 'users.db'))
@@ -149,21 +152,20 @@ def events():
             '''
             cursor.execute(query, (filter_date,))
             events = cursor.fetchall()
-            print(f"Events found: {events}")  # Debugging output
         else:
             # Retrieve all events if no date is provided
             query = 'SELECT * FROM event'
             cursor.execute(query)
             events = cursor.fetchall()
-            print("No date filter applied, displaying all events.")  # Debugging output
+
+        # Fetch the list of event IDs that the user has already joined
+        joined_events = UserEvent.query.filter_by(user_id=user_id).all()
+        joined_event_ids = [event.event_id for event in joined_events]
 
         conn.close()
 
-        # Render the template with the filtered events
-        if events:
-            return render_template('event_template.html', events=events)
-        else:
-            return render_template('event_template.html', events=[], message="No events found for the selected date.")
+        # Render the template with the filtered events and joined event IDs
+        return render_template('event_template.html', events=events, joined_event_ids=joined_event_ids)
 
     except sqlite3.Error as e:
         print(f"Database connection error: {e}")
@@ -361,6 +363,53 @@ def scrape_and_store_events():
 
     conn.commit()
     conn.close()
+
+@app.route('/join_event/<int:event_id>', methods=['POST'])
+def join_event(event_id):
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+
+    user_id = session['user_id']
+
+    # Check if the user has already joined the event
+    existing_event = UserEvent.query.filter_by(user_id=user_id, event_id=event_id).first()
+    if existing_event:
+        flash('You have already joined this event.')
+        return redirect(url_for('events'))
+
+    # Fetch event details from the SQLite database using a raw SQL query
+    db_path = os.path.abspath(os.path.join('instance', 'users.db'))
+    conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM event WHERE eventid = ?', (event_id,))
+    event = cursor.fetchone()
+    conn.close()
+
+    if not event:
+        return "Event not found", 404
+
+    # Convert date and time
+    event_date = datetime.strptime(event[2], "%Y-%m-%d").date()
+    start_time = datetime.strptime(event[3], "%H:%M").time()
+    end_time = datetime.strptime(event[4], "%H:%M").time()
+
+    # Create a new UserEvent instance
+    user_event = UserEvent(
+        user_id=user_id,
+        event_id=event[0],
+        title=event[1],
+        date=event_date,
+        start=start_time,
+        end=end_time,
+        dow=event[5]
+    )
+
+    # Add and commit to the database
+    db.session.add(user_event)
+    db.session.commit()
+
+    flash('You have successfully joined the event.')
+    return redirect(url_for('events'))
 
 
 

@@ -26,9 +26,8 @@
                 <th>Start Time</th>
                 <th>End Time</th>
                 <th>Day of Week</th>
+                <th>Action</th>
             </tr>
-        </thead>
-        <tbody>
             {% for event in events %}
             <tr>
                 <td>{{ event[0] }}</td>
@@ -37,6 +36,15 @@
                 <td>{{ event[3] }}</td>
                 <td>{{ event[4] }}</td>
                 <td>{{ event[5] }}</td>
+                <td>
+                    {% if event[0] in joined_event_ids %}
+                        <button style="background-color: grey; color: white; padding: 10px 20px; border: none; cursor: not-allowed;" disabled>Joined</button>
+                    {% else %}
+                        <form action="{{ url_for('join_event', event_id=event[0]) }}" method="POST">
+                            <button type="submit" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; cursor: pointer;">Join</button>
+                        </form>
+                    {% endif %}
+                </td>
             </tr>
             {% endfor %}
         </tbody>

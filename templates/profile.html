@@ -18,14 +18,27 @@
             </div>
         </div>
 
-        <!-- Center Section: Profile Information -->
-        <div class="info-section">
-            <div class="info-card">
-                <p><strong>Hobbies:</strong> Basketball</p>
-                <p><strong>Major:</strong> Data Science</p>
-                <p><strong>Degree:</strong> Bachelor of Science</p>
-            </div>
-        </div>
+        <!-- Profile Page - Joined Events Section -->
+    <div class="joined-events-section">
+        <h3>Joined Events</h3>
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+            </tr>
+            {% for event in joined_events %}
+            <tr>
+                <td>{{ event.title }}</td>
+                <td>{{ event.date }}</td>
+                <td>{{ event.start }}</td>
+                <td>{{ event.end }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
 
         <!-- Right Section: Action Buttons -->
         <div class="action-section">
