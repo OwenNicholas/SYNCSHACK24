@@ -4,27 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ethnicity Question</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/q1.css') }}">
 </head>
 <body>
-    <!-- Ensure the form action dynamically directs to the next question using Flask routing -->
-    <form action="{{ url_for('question', q_number=1) }}" method="POST">
-        <label for="ethnicity">What's your ethnicity?</label>
-        <select id="ethnicity" name="answer" required>
-            <option value="" disabled selected>Select your ethnicity</option>
-            <option value="Asian">Asian</option>
-            <option value="Black or African American">Black or African American</option>
-            <option value="Hispanic or Latino">Hispanic or Latino</option>
-            <option value="Native American or Alaska Native">Native American or Alaska Native</option>
-            <option value="White">White</option>
-            <option value="Pacific Islander">Pacific Islander</option>
-            <option value="Middle Eastern">Middle Eastern</option>
-            <option value="Multiracial">Multiracial</option>
-            <option value="Other">Other</option>
-            <option value="Prefer not to say">Prefer not to say</option>
-        </select>
-        <br><br>
-        <button type="submit">Submit</button>
-    </form>
+    <div class="container">
+        <h2>What's your ethnicity?</h2> <!-- Ensure heading is included -->
+        <form action="{{ url_for('question', q_number=1) }}" method="POST">
+            <label for="ethnicity">Choose one:</label><br><br>
+            <select id="ethnicity" name="answer" required>
+                <option value="" disabled selected>Select your ethnicity</option>
+                <option value="Asian">Asian</option>
+                <option value="Black or African American">Black or African American</option>
+                <option value="Hispanic or Latino">Hispanic or Latino</option>
+                <option value="Native American or Alaska Native">Native American or Alaska Native</option>
+                <option value="White">White</option>
+                <option value="Pacific Islander">Pacific Islander</option>
+                <option value="Middle Eastern">Middle Eastern</option>
+                <option value="Multiracial">Multiracial</option>
+                <option value="Other">Other</option>
+                <option value="Prefer not to say">Prefer not to say</option>
+            </select>
+            <br><br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
 </body>
 </html>
 

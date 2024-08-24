@@ -4,38 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ideal Weekend Question</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/q4.css') }}">
 </head>
 <body>
-    <h2>What does your ideal weekend look like?</h2>
-    <form action="{{ url_for('question', q_number=4) }}" method="POST">
-        <label for="ideal_weekend">Choose one:</label><br><br>
-        
-        <!-- List of ideal weekend options with radio buttons -->
-        <input type="radio" id="exploring" name="answer" value="Exploring new places" required>
-        <label for="exploring">Exploring new places or going on adventures</label><br>
+    <div class="container">
+        <h2>What does your ideal weekend look like?</h2>
+        <form action="{{ url_for('question', q_number=4) }}" method="POST">
+            <label for="ideal_weekend">Choose one:</label><br><br>
 
-        <input type="radio" id="relaxing_home" name="answer" value="Relaxing at home">
-        <label for="relaxing_home">Relaxing at home with a good book or movie</label><br>
+            <!-- Dropdown list of ideal weekend options -->
+            <select id="ideal_weekend" name="answer" required>
+                <option value="">Select an activity</option>
+                <option value="Exploring new places">Exploring new places or going on adventures</option>
+                <option value="Relaxing at home">Relaxing at home with a good book or movie</option>
+                <option value="Spending time with friends and family">Spending time with friends and family</option>
+                <option value="Engaging in physical activities">Engaging in physical activities like sports or hiking</option>
+                <option value="Attending cultural events">Attending cultural events like concerts, theaters, or art exhibitions</option>
+                <option value="Gardening or DIY projects">Gardening or working on DIY projects at home</option>
+                <option value="Gaming or technology projects">Playing video games or working on technology projects</option>
+                <option value="Weekend getaway">Going on a weekend getaway or short trip</option>
+            </select><br><br>
 
-        <input type="radio" id="socializing" name="answer" value="Spending time with friends and family">
-        <label for="socializing">Spending time with friends and family</label><br>
-
-        <input type="radio" id="active" name="answer" value="Engaging in physical activities">
-        <label for="active">Engaging in physical activities like sports or hiking</label><br>
-
-        <input type="radio" id="culture" name="answer" value="Attending cultural events">
-        <label for="culture">Attending cultural events like concerts, theaters, or art exhibitions</label><br>
-
-        <input type="radio" id="gardening" name="answer" value="Gardening or DIY projects">
-        <label for="gardening">Gardening or working on DIY projects at home</label><br>
-
-        <input type="radio" id="gaming" name="answer" value="Gaming or technology projects">
-        <label for="gaming">Playing video games or working on technology projects</label><br>
-
-        <input type="radio" id="traveling" name="answer" value="Weekend getaway">
-        <label for="traveling">Going on a weekend getaway or short trip</label><br><br>
-
-        <button type="submit">Submit</button>
-    </form>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
 </body>
 </html>
