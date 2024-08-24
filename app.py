@@ -78,7 +78,6 @@ def question(q_number):
         else:
             return render_template('thank_you.html')  # Or another page after the last question
 
-    # Dynamically render question from the main templates directory
     try:
         return render_template(f'q{q_number}.html')
     except Exception:

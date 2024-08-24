@@ -4,18 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Self-Description Question</title>
-    <link rel="stylesheet" type="text/css" href="q5.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/q5.css') }}">
 </head>
 <body>
-    <h2>Write a sentence about yourself:</h2>
-    <form action="{{ url_for('question', q_number=5) }}" method="POST">
-        <label for="self_description">Tell us something about you:</label><br><br>
-        
-        <!-- Text area for self-description with consistent name -->
-        <textarea id="self_description" name="answer" rows="4" cols="50" placeholder="Write a sentence about yourself..." required></textarea><br><br>
-        
-        <button type="submit">Submit</button>
-    </form>
+    <div class="container">
+        <h2>Write a sentence about yourself:</h2>
+        <form action="{{ url_for('question', q_number=5) }}" method="POST">
+            <label for="self_description">Tell us something about you:</label><br><br>
+
+            <!-- Text area for self-description with consistent name -->
+            <textarea id="self_description" name="answer" rows="4" placeholder="Write a sentence about yourself..." required></textarea><br><br>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
 </body>
 </html>
 
