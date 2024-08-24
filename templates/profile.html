@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile Page</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='edit_profile.css') }}"> >
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
 </head>
 <body>
     <div class="main-container">
@@ -30,11 +30,12 @@
         <!-- Right Section: Action Buttons -->
         <div class="action-section">
             <div class="action-card">
-                <button class="action-button">See Events</button>
-                <button class="action-button">Find Friends</button>
-                <button class="action-button">Sign Out</button>
+                <a href="{{ url_for('events_list') }}" class="action-button">See Events</a>
+                <a href="{{ url_for('friends_list') }}" class="action-button">Find Friends</a>
+                <a href="{{ url_for('sign_out') }}" class="action-button">Sign Out</a>
             </div>
         </div>
+        
     </div>
 </body>
 </html>

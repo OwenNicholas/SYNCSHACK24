@@ -93,6 +93,20 @@ def profile():
     
     return render_template('profile.html', user=user)
 
+@app.route('/events_list')
+def events_list():
+    return render_template('events_list.html')
+
+@app.route('/friends_list')
+def friends_list():
+    return render_template('friends_list.html')
+
+@app.route('/sign_out')
+def sign_out():
+    session.pop('user_id', None)
+    return redirect(url_for('login'))
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
