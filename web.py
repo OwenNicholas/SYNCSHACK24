@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 import sqlite3
 
-conn = sqlite3.connect(r'instance\users.db')
+conn = sqlite3.connect(r'instance/users.db')
 cursor = conn.cursor()
 
 cursor.execute('''
