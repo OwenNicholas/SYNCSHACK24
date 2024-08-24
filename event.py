@@ -1,24 +1,60 @@
+from flask import Flask, request, render_template, redirect, url_for
 import sqlite3
-from jinja2 import Environment, FileSystemLoader
+import os
 
-db_path = 'instance/users.db'
-html_template_path = 'templates/event_template.html'
-output_html_path = 'templates/event.html'
+app = Flask(__name__)
 
-conn = sqlite3.connect(db_path)
-cursor = conn.cursor()
+@app.route('/')
+def home():
+    # Redirect to the /events route directly
+    return redirect(url_for('events'))
 
-cursor.execute('SELECT * FROM event')
-events = cursor.fetchall()
+@app.route('/events', methods=['GET'])
+def events():
+    # Get the date from the query parameter
+    filter_date = request.args.get('event_date')  # Ensure parameter name matches HTML form
 
-conn.close()
+    # Print the filter date for debugging purposes
+    #print(f"Filter date received: {filter_date}")
 
-env = Environment(loader=FileSystemLoader('templates'))
-template = env.get_template('event_template.html')
+    # Connect to the database
+    db_path = os.path.abspath(os.path.join('instance', 'users.db'))
+    
+    if not os.path.exists(db_path):
+        print("Database file not found.")  # Debugging output
+        return "Database file not found.", 500
 
-html_content = template.render(events=events)
+    try:
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+        
+        if filter_date:
+            # Filter events based on the input date
+            query = '''
+            SELECT * FROM event
+            WHERE date = ?
+            '''
+            cursor.execute(query, (filter_date,))
+            events = cursor.fetchall()
+            print(f"Events found: {events}")  # Debugging output
+        else:
+            # Retrieve all events if no date is provided
+            query = 'SELECT * FROM event'
+            cursor.execute(query)
+            events = cursor.fetchall()
+            print("No date filter applied, displaying all events.")  # Debugging output
 
-with open(output_html_path, 'w') as file:
-    file.write(html_content)
+        conn.close()
 
-print(f'HTML file generated: {output_html_path}')
+        # Render the template with the filtered events
+        if events:
+            return render_template('event_template.html', events=events)
+        else:
+            return render_template('event_template.html', events=[], message="No events found for the selected date.")
+
+    except sqlite3.Error as e:
+        print(f"Database connection error: {e}")
+        return "Database connection error", 500
+
+if __name__ == '__main__':
+    app.run(debug=True)
