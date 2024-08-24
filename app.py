@@ -97,9 +97,6 @@ def profile():
 def events_list():
     return render_template('events_list.html')
 
-@app.route('/friends_list')
-def friends_list():
-    return render_template('friends_list.html')
 
 @app.route('/sign_out')
 def sign_out():
@@ -109,6 +106,69 @@ def sign_out():
 @app.route('/edit_profile')
 def edit_profile():
     return render_template('edit_profile.html')
+
+@app.route('/some_route')
+def some_function():
+    # Correctly generate the URL with the 'username' parameter
+    return redirect(url_for('friends_list', username='some_username'))
+
+
+
+class User(db.Model):
+    __tablename__ = 'user'
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(100), nullable=False)
+    password = db.Column(db.String(255), nullable=False)
+    q1 = db.Column(db.String(100))
+    q2 = db.Column(db.String(100))
+    q3 = db.Column(db.String(100))
+    q4 = db.Column(db.String(100))
+    q5 = db.Column(db.String(100))
+
+    __table_args__ = {'extend_existing': True}
+
+def calculate_match(user1, user2):
+    match_count = 0
+    total_questions = 5
+
+    if user1.q1 == user2.q1:
+        match_count += 1
+    if user1.q2 == user2.q2:
+        match_count += 1
+    if user1.q3 == user2.q3:
+        match_count += 1
+    if user1.q4 == user2.q4:
+        match_count += 1
+    if user1.q5 == user2.q5:
+        match_count += 1
+
+    match_percentage = (match_count / total_questions) * 100
+    return match_percentage
+
+def get_matches(current_user):
+    users = User.query.all()
+    matches = []
+
+    for other_user in users:
+        if other_user.username != current_user.username:
+            match_percentage = calculate_match(current_user, other_user)
+            matches.append({
+                'username': other_user.username,
+                'match_percentage': match_percentage
+            })
+
+    matches.sort(key=lambda x: x['match_percentage'], reverse=True)
+    return matches
+
+@app.route('/friends_list/<username>')
+def friends_list(username):
+    user = User.query.filter_by(username=username).first()
+    if not user:
+        return "User not found.", 404
+    
+    matches = get_matches(user)
+    return render_template('friends_list.html', matches=matches, username=username)
+
 
 
 
