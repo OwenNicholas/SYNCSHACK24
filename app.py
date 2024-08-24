@@ -1,3 +1,4 @@
+
 from flask import Flask, render_template, request, redirect, url_for, session  # Include session here
 from flask_bcrypt import Bcrypt
 from models import db, User
@@ -6,6 +7,7 @@ app = Flask(__name__)
 app.secret_key = 'f9c6254ef57f4bccfc7f9684566b615c' 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.secret_key = 'your_secret_key'  # Needed for flashing messages
 
 db.init_app(app)
 bcrypt = Bcrypt(app)
@@ -21,31 +23,33 @@ def home():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        email = request.form['email']
-        password = request.form['password']
-        user = User.query.filter_by(email=email).first()
+        username = request.form['username']
+        password = request.form['password']  # Capture the password from the form
+        user = User.query.filter_by(username=username).first()
         if user and bcrypt.check_password_hash(user.password, password):
+
             session['user_id'] = user.id  # Store the user's ID in the session
             return redirect(url_for('home'))
-        else:
-            return 'Invalid credentials'
     return render_template('login.html')
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     if request.method == 'POST':
         email = request.form['email']
+        username = request.form['username']  # Capture the username from the form
         password = request.form['password']
         hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
         existing_user = User.query.filter_by(email=email).first()
         if not existing_user:
+
             new_user = User(email=email, password=hashed_password, q1='', q2='', q3='', q4='', q5='')
             db.session.add(new_user)
             db.session.commit()
             session['user_id'] = new_user.id  # Store user id in session
             return redirect(url_for('question', q_number=1))  # Redirect to the first question
         else:
-            return 'User already exists'
+            flash('User already exists', 'danger')
+            return redirect(url_for('signup'))
     return render_template('signup.html')
 
 @app.route('/question/<int:q_number>', methods=['GET', 'POST'])
