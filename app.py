@@ -1,5 +1,5 @@
 
-from flask import Flask, render_template, request, redirect, url_for, session  # Include session here
+from flask import Flask, render_template, request, redirect, url_for, session, flash  # Include session here
 from flask_bcrypt import Bcrypt
 from models import db, User
 
@@ -7,7 +7,6 @@ app = Flask(__name__)
 app.secret_key = 'f9c6254ef57f4bccfc7f9684566b615c' 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.secret_key = 'your_secret_key'  # Needed for flashing messages
 
 db.init_app(app)
 bcrypt = Bcrypt(app)
@@ -16,41 +15,38 @@ bcrypt = Bcrypt(app)
 with app.app_context():
     db.create_all()
 
-@app.route('/')
-def home():
-    return render_template('index.html')
-
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])  # Use '/' for the login route
 def login():
     if request.method == 'POST':
         username = request.form['username']
-        password = request.form['password']  # Capture the password from the form
+        password = request.form['password']
         user = User.query.filter_by(username=username).first()
         if user and bcrypt.check_password_hash(user.password, password):
+            session['user_id'] = user.id
+            return redirect(url_for('profile'))  # Redirect to the profile page after login
+        else:
+            error_message = 'Invalid username or password'  # Set error message if login fails
+            return render_template('index.html', error_message=error_message)  # Pass error message to template
+    return render_template('index.html')  # Render index.html for the login page
 
-            session['user_id'] = user.id  # Store the user's ID in the session
-            return redirect(url_for('home'))
-    return render_template('login.html')
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
+    error_message = None  # Initialize the error message
     if request.method == 'POST':
-        email = request.form['email']
         username = request.form['username']  # Capture the username from the form
         password = request.form['password']
         hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
-        existing_user = User.query.filter_by(email=email).first()
+        existing_user = User.query.filter_by(username=username).first()
         if not existing_user:
-
-            new_user = User(email=email, password=hashed_password, q1='', q2='', q3='', q4='', q5='')
+            new_user = User(username=username, password=hashed_password, q1='', q2='', q3='', q4='', q5='')
             db.session.add(new_user)
             db.session.commit()
             session['user_id'] = new_user.id  # Store user id in session
             return redirect(url_for('question', q_number=1))  # Redirect to the first question
         else:
-            flash('User already exists', 'danger')
-            return redirect(url_for('signup'))
-    return render_template('signup.html')
+            error_message = 'User already exists'  # Set the error message
+    return render_template('signup.html', error_message=error_message)  # Pass the error message to the template
 
 @app.route('/question/<int:q_number>', methods=['GET', 'POST'])
 def question(q_number):
@@ -86,6 +82,17 @@ def question(q_number):
         return render_template(f'q{q_number}.html')
     except Exception:
         return "Question not found", 404
+
+@app.route('/profile')
+def profile():
+    if 'user_id' not in session:
+        return redirect(url_for('login'))  # Ensure user is logged in
+    
+    user_id = session['user_id']
+    user = User.query.get(user_id)
+    
+    return render_template('profile.html', user=user)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
