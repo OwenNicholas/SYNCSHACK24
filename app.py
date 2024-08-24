@@ -106,6 +106,10 @@ def sign_out():
     session.pop('user_id', None)
     return redirect(url_for('login'))
 
+@app.route('/edit_profile')
+def edit_profile():
+    return render_template('edit_profile.html')
+
 
 
 if __name__ == '__main__':
