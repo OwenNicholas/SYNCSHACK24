@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash  # Include session here
 from flask_bcrypt import Bcrypt
-from models import db, User
+from models import db, User, FriendRequest, Friendship
 
 import sqlite3
 from jinja2 import Environment, FileSystemLoader
@@ -88,14 +88,32 @@ def question(q_number):
 
 @app.route('/profile')
 def profile():
-    if 'user_id' not in session:
+    current_user = get_current_user()  # Function to get the logged-in user
+    if not current_user:
         return redirect(url_for('login'))
 
-    user_id = session['user_id']
-    user = User.query.get(user_id)
-    
-    return render_template('profile.html', user=user, username=user.username)
+    # Get friend requests and accepted friends
+    friend_requests = FriendRequest.query.filter_by(receiver_id=current_user.id, status='pending').all()
+    friends = []
 
+    friendships = Friendship.query.filter(
+        (Friendship.user1_id == current_user.id) | (Friendship.user2_id == current_user.id)
+    ).all()
+
+    for friendship in friendships:
+        friend_id = friendship.user1_id if friendship.user1_id != current_user.id else friendship.user2_id
+        friend = User.query.get(friend_id)
+        if friend:
+            friends.append(friend)
+
+    # Pass the data to the template
+    return render_template(
+        'profile.html', 
+        friend_requests=friend_requests, 
+        friends=friends, 
+        username=current_user.username, 
+        user_description=current_user.q5
+    )
 
 @app.route('/events_list')
 def events_list():
@@ -141,25 +159,94 @@ def get_matches(current_user):
     users = User.query.all()
     matches = []
 
+    # Fetch IDs of all friends
+    friends_ids = set()
+    friendships = Friendship.query.filter(
+        (Friendship.user1_id == current_user.id) | (Friendship.user2_id == current_user.id)
+    ).all()
+    for friendship in friendships:
+        if friendship.user1_id == current_user.id:
+            friends_ids.add(friendship.user2_id)
+        else:
+            friends_ids.add(friendship.user1_id)
+
+    # Exclude current user's own ID and friends' IDs
     for other_user in users:
-        if other_user.username != current_user.username:
+        if other_user.id != current_user.id and other_user.id not in friends_ids:
             match_percentage = calculate_match(current_user, other_user)
             matches.append({
                 'username': other_user.username,
-                'match_percentage': match_percentage
+                'match_percentage': match_percentage,
+                'id': other_user.id  # Ensure that 'id' is included here
             })
 
     matches.sort(key=lambda x: x['match_percentage'], reverse=True)
     return matches
+
+def get_current_user():
+    user_id = session.get('user_id')
+    if user_id:
+        return User.query.get(user_id)
+    return None
 
 @app.route('/friends_list/<username>')
 def friends_list(username):
     user = User.query.filter_by(username=username).first()
     if not user:
         return "User not found.", 404
-    
+
     matches = get_matches(user)
+    
+    # Check existing requests for each match
+    for match in matches:
+        existing_request = FriendRequest.query.filter_by(sender_id=user.id, receiver_id=match['id']).first()
+        if existing_request:
+            match['requested'] = True
+        else:
+            match['requested'] = False
+
     return render_template('friends_list.html', matches=matches, username=username)
+
+# Route to send friend request
+@app.route('/send_friend_request/<int:receiver_id>', methods=['POST'])
+def send_friend_request(receiver_id):
+    current_user = get_current_user()
+    if not current_user:
+        return redirect(url_for('login'))
+
+    existing_request = FriendRequest.query.filter_by(sender_id=current_user.id, receiver_id=receiver_id).first()
+    if not existing_request:
+        new_request = FriendRequest(sender_id=current_user.id, receiver_id=receiver_id)
+        db.session.add(new_request)
+        db.session.commit()
+        flash("Friend request sent!")
+    else:
+        flash("Friend request already sent.")
+    
+    return redirect(url_for('friends_list', username=current_user.username))
+
+
+@app.route('/respond_friend_request/<int:request_id>/<response>')
+def respond_friend_request(request_id, response):
+    friend_request = FriendRequest.query.get(request_id)
+    current_user = get_current_user()  # Assume this function gets the currently logged-in user
+    
+    if friend_request and friend_request.receiver_id == current_user.id:
+        if response == 'accept':
+            friend_request.status = 'accepted'
+            db.session.commit()
+            # Add to friendships
+            new_friendship = Friendship(user1_id=friend_request.sender_id, user2_id=friend_request.receiver_id)
+            db.session.add(new_friendship)
+            db.session.commit()
+            flash("Friend request accepted.")
+        elif response == 'decline':
+            friend_request.status = 'declined'
+            db.session.commit()
+            flash("Friend request declined.")
+    
+    return redirect(url_for('profile'))
+
 
 
 '''
@@ -187,4 +274,4 @@ print(f'HTML file generated: {output_html_path}')
 
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=5000, debug=True)
+    app.run(host='127.0.0.1', port=5004, debug=True)

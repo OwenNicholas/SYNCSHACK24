@@ -21,7 +21,7 @@ body {
     border-radius: 10px; /* Rounded corners for the main container */
 }
 
-.profile-section, .info-section, .action-section {
+.profile-section, .action-section {
     flex: 1; /* Each section takes up an equal share of available width */
     max-width: 30%; /* Limit the maximum width of each section */
     margin: 10px; /* Space around each section */
@@ -29,7 +29,7 @@ body {
     box-sizing: border-box;
 }
 
-.profile-card, .info-card, .action-card {
+.profile-card, .action-card {
     background-color: #fff;
     width: 100%; /* Make inner content fill the width of each section */
     height: 100%; /* Ensure content fills the full height of each section */
@@ -101,4 +101,49 @@ body {
 
 .action-button:hover {
     background: linear-gradient(to right, #2575cf, #6a11cb);
+}
+
+.info-section {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    margin: 10px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.info-card {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.friend-request, .friends-list p {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 0;
+}
+
+.accept-button, .decline-button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.accept-button {
+    background-color: #28a745;
+    color: white;
+}
+
+.decline-button {
+    background-color: #dc3545;
+    color: white;
 }

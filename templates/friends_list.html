@@ -170,16 +170,22 @@
             <div class="friend-info">
                 <p>{{ match.username }}</p>
                 <p class="match-rate">Match Rate: {{ match.match_percentage }}%</p>
-                <!-- Add the percentage bar below -->
                 <div class="percentage-bar-container">
                     <div class="percentage-bar" style="width: {{ match.match_percentage }}%;"></div>
                 </div>
                 <p class="status">My Friend</p>
             </div>
-            <button class="action-button" onclick="requestFriend(this)">Add Friend</button>
+            <!-- Form to send friend request -->
+            <form action="{{ url_for('send_friend_request', receiver_id=match.id) }}" method="post">
+                {% if match.requested %}
+                    <button type="button" class="action-button requested" disabled>Requested</button>
+                {% else %}
+                    <button type="submit" class="action-button">Add Friend</button>
+                {% endif %}
+            </form>
         </div>
         {% endfor %}
-    </div>
+    </div>    
 
     <div class="suggestion">
         <p>Looking for new friends?</p>
