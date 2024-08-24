@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friend Requests</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/requests.css') }}">
+</head>
+<body>
+    <div class="header">
+        Friend Requests
+    </div>
+    <div class="request-list">
+        {% for request in requests %}
+        <div class="request">
+            <p>Request from: {{ request.sender.username }}</p>
+            <div class="actions">
+                <form action="{{ url_for('accept_request', request_id=request.id) }}" method="POST">
+                    <button type="submit" class="accept-button">Accept</button>
+                </form>
+                <form action="{{ url_for('decline_request', request_id=request.id) }}" method="POST">
+                    <button type="submit" class="decline-button">Decline</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
