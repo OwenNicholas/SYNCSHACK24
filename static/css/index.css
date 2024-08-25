@@ -1,13 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Roboto:wght@300;400&display=swap');
+
 /* Base styles for body */
 body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(to right, #0000FF, #7EC8E3);
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to right, #6a11cb, #2575fc); /* Futuristic gradient */
     margin: 0;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    color: #333;
+    color: #ffffff; /* White text for contrast */
+    overflow: hidden;
+}
+
+/* Header container */
+.header-container {
+    text-align: center;
+    margin-bottom: -60px;
+}
+
+.header-container h1 {
+    font-family: 'Orbitron', sans-serif; /* Futuristic font */
+    font-size: 36px;
+    margin-bottom: 10px;
+    text-transform: uppercase; /* Uppercase for a futuristic feel */
+    letter-spacing: 2px; /* Increased letter spacing */
+    color: #ffffff; /* White text */
+    animation: glow 1.5s ease-in-out infinite alternate; /* Glowing effect */
+}
+
+.header-container p {
+    font-size: 16px;
+    color: #dddddd; /* Subtle color for the subtitle */
+}
+
+/* Animation for the glowing text */
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #6a11cb, 0 0 20px #6a11cb, 0 0 30px #6a11cb, 0 0 40px #2575fc, 0 0 70px #2575fc, 0 0 80px #2575fc, 0 0 100px #2575fc, 0 0 150px #2575fc;
+    }
+    to {
+        text-shadow: 0 0 20px #2575fc, 0 0 30px #2575fc, 0 0 40px #2575fc, 0 0 50px #6a11cb, 0 0 80px #6a11cb, 0 0 90px #6a11cb, 0 0 120px #6a11cb, 0 0 200px #6a11cb;
+    }
 }
 
 /* Container for the login and sign-up box */
@@ -21,70 +56,115 @@ body {
 
 /* Login and Sign-up box styling */
 .login-box {
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.7); /* Transparent dark background for a futuristic look */
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Stronger shadow for depth */
     width: 100%;
     max-width: 400px;
     text-align: center;
+    position: relative; /* Allows for added effects like the neon border */
+    border: 2px solid rgba(255, 255, 255, 0.1); /* Subtle border */
 }
 
 /* Header style */
 h2 {
-    color: #333;
+    font-family: 'Orbitron', sans-serif; /* Futuristic font */
+    color: #ffffff;
     margin-bottom: 30px;
-    font-size: 24px;
+    font-size: 28px; /* Slightly larger font for prominence */
+    text-transform: uppercase; /* Uppercase for a futuristic feel */
+    letter-spacing: 2px; /* Increased letter spacing */
 }
 
 /* Input group styling */
 .input-group {
     margin-bottom: 20px;
     text-align: left;
+    position: relative;
 }
 
 .input-group label {
     display: block;
     margin-bottom: 5px;
-    color: #555;
+    color: #aaaaaa; /* Lighter color for label */
+    font-size: 14px;
 }
 
 .input-group input {
     width: calc(100% - 20px);
-    padding: 10px;
-    border: 1px solid #ddd;
+    padding: 12px;
+    border: none;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.1); /* Transparent input background */
+    color: #ffffff; /* White text */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow inside the input */
+}
+
+.input-group input:focus {
+    outline: none;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3); /* Slight glow effect on focus */
+}
+
+.input-group i {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #2575fc; /* Matching icon color with gradient */
 }
 
 /* Button styling */
 .btn {
-    background: linear-gradient(to right, #6a11cb, #2575fc);
+    background: linear-gradient(to right, #6a11cb, #2575fc); /* Gradient for the button */
     border: none;
     color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 12px 20px;
+    border-radius: 25px; /* Rounded corners */
     cursor: pointer;
     width: 100%;
-    font-size: 16px;
+    font-size: 18px;
     margin-bottom: 20px;
+    text-transform: uppercase; /* Uppercase for a futuristic feel */
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Button shadow */
+    transition: all 0.3s ease;
 }
 
 .btn:hover {
-    background: linear-gradient(to right, #2575fc, #6a11cb);
+    background: linear-gradient(to right, #2575fc, #6a11cb); /* Inverted gradient on hover */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Stronger shadow on hover */
 }
 
 /* Sign-up/Log-in link */
 p {
     margin-top: 20px;
-    color: #555;
+    color: #aaaaaa; /* Lighter text for subtlety */
 }
 
 p a {
-    color: #2575fc;
+    color: #6a11cb; /* Gradient color for the link */
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 p a:hover {
+    color: #2575fc; /* Invert color on hover */
     text-decoration: underline;
+}
+
+/* Neon border effect */
+.login-box::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    border-radius: 25px;
+    z-index: -1;
+    filter: blur(10px);
+    opacity: 0.8;
 }

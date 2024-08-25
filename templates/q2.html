@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Field of Study Question</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/q2.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/q2.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="container">
         <form action="{{ url_for('question', q_number=2) }}" method="POST">
-            <label for="field_of_study">What's your field of study?</label>
+            <label for="field_of_study"><i class="fas fa-book"></i> What's your field of study?</label>
             <select id="field_of_study" name="answer" required>
                 <option value="" disabled selected>Select your field of study</option>
                 <!-- Grouped fields of study -->
@@ -28,8 +29,7 @@
                 <option value="Psychology and Behavioral Sciences">Psychology and Behavioral Sciences</option>
                 <option value="Other">Other</option>
             </select>
-            <br><br>
-            <button type="submit">Submit</button>
+            <button type="submit"><i class="fas fa-paper-plane"></i> Submit</button>
         </form>
     </div>
 </body>

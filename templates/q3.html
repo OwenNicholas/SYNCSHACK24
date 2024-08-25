@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Activity Description Question</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/q3.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/q3.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="container">
-        <h2>Which activity most describes you?</h2>
+        <h2><i class="fas fa-heartbeat"></i> Which activity most describes you?</h2>
         <form action="{{ url_for('question', q_number=3) }}" method="POST">
-            <label for="activity">Choose one:</label><br><br>
+            <label for="activity"><i class="fas fa-tasks"></i> Choose one:</label>
             <select id="activity" name="answer" required>
                 <option value="">Select an activity</option>
                 <option value="Gaming">Gaming</option>
@@ -23,8 +24,8 @@
                 <option value="Creating Art">Creating Art</option>
                 <option value="Socializing with Friends">Socializing with Friends</option>
                 <option value="Fitness and Gym">Fitness and Gym</option>
-            </select><br><br>
-            <button type="submit">Submit</button>
+            </select>
+            <button type="submit"><i class="fas fa-paper-plane"></i> Submit</button>
         </form>
     </div>
 </body>

@@ -1,130 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Roboto:wght@300;400&display=swap');
+
 body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(to right, #0000FF, #7EC8E3); /* Background gradient for the body */
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to right, #6a11cb, #2575fc); /* Gradient you provided */
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    color: #2C2B2C; /* General text color */
+    color: #ffffff; /* White text for contrast */
+    overflow: hidden; /* To prevent scrolling */
 }
 
 .main-container {
     display: flex;
-    justify-content: space-around; /* Distribute space evenly */
-    align-items: flex-start; /* Align items to the top */
+    justify-content: space-around;
+    align-items: flex-start;
     padding: 20px;
-    height: 80vh; /* Reduced height to allow space around */
-    width: 90vw; /* Set width to take up most of the viewport width */
+    height: 80vh;
+    width: 90vw;
     box-sizing: border-box;
-    background: rgba(255, 255, 255, 0.1); /* Light background for separation */
-    border-radius: 10px; /* Rounded corners for the main container */
+    background: rgba(0, 0, 0, 0.6); /* Slightly transparent black background */
+    border-radius: 25px; /* Rounded corners */
+    backdrop-filter: blur(10px); /* Blur effect for a modern look */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); /* Stronger shadow for depth */
 }
 
 .profile-section, .info-section, .action-section {
-    flex: 1; /* Each section takes up an equal share of available width */
-    max-width: 30%; /* Limit the maximum width of each section */
-    margin: 10px; /* Space around each section */
-    height: 100%; /* Make each section the same height as the main container */
+    flex: 1;
+    max-width: 30%;
+    margin: 10px;
+    height: 100%;
     box-sizing: border-box;
 }
 
 .profile-card, .info-card, .action-card {
-    background-color: #fff; /* White background for cards */
-    width: 100%; /* Make inner content fill the width of each section */
+    background-color: rgba(255, 255, 255, 0.1); /* Transparent white with slight opacity */
+    width: 100%;
     padding: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for cards */
-    border-radius: 5px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+    border-radius: 20px; /* Rounded corners */
     text-align: center;
-    display: flex; /* Use flexbox to center content */
-    flex-direction: column; /* Stack content vertically */
-    justify-content: center; /* Center content vertically */
-    align-items: center; /* Center content horizontally */
-    margin-bottom: 20px; /* Space between cards */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    font-family: 'Orbitron', sans-serif; /* Futuristic font for titles */
+    color: #ffffff; /* White text */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
 }
 
 .user-name {
-    font-size: 22px; /* Larger font size */
-    font-weight: bold;
+    font-size: 28px; /* Slightly larger font */
+    font-weight: 600;
     margin: 10px 0;
-    color: #2C2B2C; /* Darker color for contrast */
+    text-transform: uppercase; /* Uppercase for a futuristic feel */
 }
 
 .user-description {
-    font-size: 16px; /* Slightly larger font size for readability */
-    color: #666; /* Subtle gray color */
+    font-size: 16px;
+    color: #bbbbbb; /* Lighter gray for description */
     margin-bottom: 20px;
 }
 
 .profile-picture {
-    width: 100px; /* Larger profile picture */
-    height: 100px;
-    border-radius: 50%; /* Circle shape */
-    margin: 10px auto; /* Center the picture horizontally */
-    display: block; /* Block element for alignment */
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 10px auto;
+    display: block;
+    border: 3px solid #ffffff; /* White border for the picture */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3); /* Neon glow effect */
 }
 
 .update-profile {
     display: block;
-    width: 80%; /* Adjust width to ensure it doesn't touch the edges */
-    padding: 10px;
-    background: linear-gradient(to right, #6a11cb, #2575cf); /* Purple to blue gradient */
-    color: white; /* White text for contrast */
+    width: 80%;
+    padding: 12px;
+    background: linear-gradient(to right, #6a11cb, #2575fc); /* Matching gradient for the button */
+    color: white;
     text-align: center;
-    text-decoration: none; /* Remove underline */
-    border-radius: 5px; /* Rounded corners */
-    margin: 20px auto 0 auto; /* Center the button and add margin on top */
+    text-decoration: none;
+    border-radius: 25px; /* Rounded corners */
+    margin: 20px auto 0 auto;
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Button shadow */
+    text-transform: uppercase; /* Uppercase for a futuristic feel */
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
 }
 
 .update-profile:hover {
-    background: linear-gradient(to right, #2575cf, #6a11cb); /* Hover effect */
+    background: linear-gradient(to right, #2575fc, #6a11cb); /* Invert gradient on hover */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Stronger shadow on hover */
 }
 
-.action-button {
-    width: 100%; /* Full width */
-    height: 50px; /* Consistent height for buttons */
-    margin-bottom: 20px; /* Space between buttons */
-    background: linear-gradient(to right, #6a11cb, #2575cf); /* Gradient for buttons */
-    color: white; /* White text for contrast */
-    border: none; /* No border */
-    cursor: pointer; /* Pointer cursor for buttons */
-    border-radius: 5px; /* Rounded corners */
-    transition: background-color 0.3s; /* Smooth transition for hover */
-    font-size: 18px; /* Larger font size for buttons */
+/* General Button Style */
+.action-button, .update-profile {
+    display: block;
+    width: 80%;
+    padding: 12px; /* Ensure the padding is consistent */
+    margin: 20px auto 0 auto; /* Consistent margin for both sets of buttons */
+    background: linear-gradient(to right, #6a11cb, #2575fc); /* Matching gradient for all buttons */
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 25px; /* Rounded corners for all buttons */
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Button shadow */
+    text-transform: uppercase; /* Uppercase for a futuristic feel */
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
 }
 
-.action-button:hover {
-    background: linear-gradient(to right, #2575cf, #6a11cb); /* Gradient change on hover */
+.action-button:hover, .update-profile:hover {
+    background: linear-gradient(to right, #2575fc, #6a11cb); /* Invert gradient on hover */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Stronger shadow on hover */
 }
+
+.action-card, .profile-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.action-card .action-button {
+    margin-bottom: 20px; /* Ensure consistent spacing between buttons */
+}
+
+.update-profile {
+    width: 80%; /* Ensure the width is consistent */
+    margin-top: 20px;
+}
+
+/* Adjusting padding and layout to be consistent */
+.profile-card, .action-card {
+    padding: 20px;
+    width: 100%; /* Ensure the card width is consistent */
+    text-align: center;
+    box-sizing: border-box;
+}
+
+
 
 .info-section {
     display: flex;
-    flex-direction: column; /* Stack child elements vertically */
-    align-items: stretch;
-    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center; /* Center the content horizontally */
+    justify-content: center; /* Center the content vertically */
     flex: 2;
     margin: 10px;
     padding: 20px;
-    background-color: white; /* White background for consistency */
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for sections */
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 25px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .info-card {
+    width: 80%; /* Adjusted to make sure the card is not too wide */
     margin-bottom: 20px;
-    padding: 10px;
-    background-color: #f9f9f9; /* Light gray background for cards */
-    border-radius: 5px; /* Rounded corners */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for cards */
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.2); /* Slightly transparent dark background */
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    color: #ffffff; /* White text */
 }
 
 .friend-request, .friends-list p, .joined-event {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 5px 0; /* Padding for friend request, friends list, and joined events */
+    padding: 5px 0;
 }
 
 .accept-button, .decline-button {
@@ -135,10 +186,10 @@ body {
     cursor: pointer;
     padding: 5px 10px;
     margin: 0 5px;
+    text-transform: uppercase; /* Uppercase for a futuristic feel */
 }
 
 .decline-button {
     background-color: #dc3545; /* Red for decline */
     color: white;
 }
-

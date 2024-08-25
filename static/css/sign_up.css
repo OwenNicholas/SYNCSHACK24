@@ -1,13 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Roboto:wght@300;400&display=swap');
+
 /* Base styles for body */
 body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(to right, #0000FF, #7EC8E3);
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to right, #6a11cb, #2575fc); /* Futuristic gradient background */
     margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    color: #333;
+    color: #ffffff; /* White text for contrast */
 }
 
 /* Container for the entire page */
@@ -21,64 +23,116 @@ body {
 
 /* Login box styling */
 .login-box {
-    background-color: #fff; /* White background for the box */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.8); /* Transparent dark background */
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Strong shadow for depth */
     max-width: 400px;
     width: 100%;
     text-align: center;
+    position: relative;
+    border: 2px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+}
+
+/* Header style */
+h2 {
+    font-family: 'Orbitron', sans-serif; /* Futuristic font */
+    color: #ffffff;
+    margin-bottom: 30px;
+    font-size: 28px; /* Larger font for prominence */
+    text-transform: uppercase; /* Uppercase for a futuristic feel */
+    letter-spacing: 2px; /* Increased letter spacing */
 }
 
 /* Input group styling */
 .input-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     text-align: left;
+    position: relative;
 }
 
 .input-group label {
     display: block;
     margin-bottom: 5px;
-    color: #333;
+    color: #aaaaaa; /* Lighter color for label */
+    font-size: 14px;
 }
 
 .input-group input {
-    width: 90%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
+    width: calc(100% - 20px);
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.1); /* Transparent input background */
+    color: #ffffff; /* White text */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow inside the input */
+}
+
+.input-group input:focus {
+    outline: none;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.5); /* Glow effect on focus */
+}
+
+.input-group i {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #2575fc; /* Matching icon color with gradient */
 }
 
 /* Button styling */
 .btn {
-    background: linear-gradient(to right, #6a11cb, #2575fc);
+    background: linear-gradient(to right, #6a11cb, #2575fc); /* Gradient for the button */
     border: none;
     color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 12px 20px;
+    border-radius: 25px; /* Rounded corners */
     cursor: pointer;
     width: 100%;
-    font-size: 16px;
+    font-size: 18px;
     margin-top: 20px;
+    text-transform: uppercase; /* Uppercase for a futuristic feel */
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Button shadow */
+    transition: all 0.3s ease;
 }
 
 .btn:hover {
-    background: linear-gradient(to right, #2575fc, #6a11cb);
+    background: linear-gradient(to right, #2575fc, #6a11cb); /* Inverted gradient on hover */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Stronger shadow on hover */
 }
 
 /* Link styling */
 p {
     margin-top: 20px;
     font-size: 14px;
-    color: #333;
+    color: #aaaaaa; /* Lighter text for subtlety */
 }
 
 p a {
-    color: #0000FF;
+    color: #6a11cb; /* Gradient color for the link */
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 p a:hover {
+    color: #2575fc; /* Invert color on hover */
     text-decoration: underline;
+}
+
+/* Neon border effect */
+.login-box::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    background: linear-gradient(to right, #6a11cb, #2575fc); /* Matching gradient */
+    border-radius: 25px;
+    z-index: -1;
+    filter: blur(10px);
+    opacity: 0.8;
 }
