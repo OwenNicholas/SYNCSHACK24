@@ -18,10 +18,7 @@ body {
     border-radius: 10px; /* Rounded corners for the container */
 }
 
-h2 {
-    font-size: 18px;
-    margin-bottom: 20px; /* Space below the heading */
-}
+
 
 label {
     display: block;
