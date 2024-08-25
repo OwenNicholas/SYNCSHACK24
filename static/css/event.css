@@ -5,6 +5,7 @@
     box-sizing: border-box;
 }
 
+
 /* Body Styles */
 body {
     font-family: Arial, sans-serif;
@@ -14,11 +15,13 @@ body {
     padding: 20px;
 }
 
+
 /* Heading Styles */
 h1 {
     text-align: center;
     margin-bottom: 20px;
 }
+
 
 /* Form Styles */
 form {
@@ -30,11 +33,13 @@ form {
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
+
 label {
     display: block;
     margin-bottom: 10px;
     font-weight: bold;
 }
+
 
 input[type="date"] {
     width: 100%;
@@ -43,6 +48,7 @@ input[type="date"] {
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+
 
 button {
     display: block;
@@ -56,9 +62,11 @@ button {
     cursor: pointer;
 }
 
+
 button:hover {
     background-color: #0056b3;
 }
+
 
 /* Table Styles */
 table {
@@ -67,25 +75,54 @@ table {
     margin-top: 20px;
 }
 
+
 thead {
     background-color: #007BFF;
     color: #fff;
 }
+
 
 thead th {
     padding: 10px;
     text-align: left;
 }
 
+
 tbody td {
     padding: 10px;
     border-bottom: 1px solid #ddd;
 }
 
+
 tbody tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
+
 tbody tr:hover {
     background-color: #f1f1f1;
 }
+
+.join-button {
+    background-color: #4CAF50; /* Green background for active join button */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer; /* Pointer cursor to indicate action */
+    border-radius: 5px; /* Optional: rounded corners */
+}
+
+.join-button:hover {
+    background-color: #45a049; /* Slightly darker green on hover */
+}
+
+.joined-button {
+    background-color: grey; /* Grey background for disabled button */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: not-allowed; /* Indicate that the button is not clickable */
+    border-radius: 5px; /* Optional: rounded corners */
+}
+
+

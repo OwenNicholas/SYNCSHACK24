@@ -117,7 +117,7 @@ def profile():
     current_user = get_current_user()  # Function to get the logged-in user
     if not current_user:
         return redirect(url_for('login'))
-    
+
     # Get friend requests and accepted friends
     friend_requests = FriendRequest.query.filter_by(receiver_id=current_user.id, status='pending').all()
     friends = []
@@ -132,13 +132,17 @@ def profile():
         if friend:
             friends.append(friend)
 
+    # Fetch joined events from the UserEvent table
+    joined_events = UserEvent.query.filter_by(user_id=current_user.id).all()
+
     # Pass the data to the template
     return render_template(
-        'profile.html', 
-        friend_requests=friend_requests, 
-        friends=friends, 
-        username=current_user.username, 
-        user_description=current_user.q5
+        'profile.html',
+        friend_requests=friend_requests,
+        friends=friends,
+        username=current_user.username,
+        user_description=current_user.q5,
+        joined_events=joined_events  # Pass joined events to the template
     )
     
 
@@ -152,17 +156,19 @@ def events():
         return redirect(url_for('login'))
 
     user_id = session['user_id']
-    current_user = User.query.get(user_id)
 
+    # Fetch the list of event IDs that the user has already joined
+    joined_events = UserEvent.query.filter_by(user_id=user_id).all()
+    joined_event_ids = [event.event_id for event in joined_events]  # This should be a list of event IDs
 
     # Get the date from the query parameter
-    filter_date = request.args.get('event_date')  # Ensure parameter name matches HTML form
+    filter_date = request.args.get('event_date')
 
     # Connect to the database
     db_path = os.path.abspath(os.path.join('instance', 'users.db'))
 
     if not os.path.exists(db_path):
-        print("Database file not found.")  # Debugging output
+        print("Database file not found.")
         return "Database file not found.", 500
 
     try:
@@ -170,59 +176,24 @@ def events():
         cursor = conn.cursor()
 
         if filter_date:
-            # Filter events based on the input date
-            query = '''
-            SELECT * FROM event
-            WHERE date = ?
-            '''
+            query = 'SELECT * FROM event WHERE date = ?'
             cursor.execute(query, (filter_date,))
-            events = cursor.fetchall()
         else:
-            # Retrieve all events if no date is provided
             query = 'SELECT * FROM event'
             cursor.execute(query)
-            events = cursor.fetchall()
-        
+
+        events = cursor.fetchall()
         conn.close()
 
-        # Fetch the list of event IDs that the user has already joined
-        joined_events = UserEvent.query.filter_by(user_id=user_id).all()
-        joined_event_ids = {event.event_id for event in joined_events}  # Create a set of joined event IDs
-
-        users = User.query.all()
-        matches = []
-
-        friends_ids = set()
-        friendships = Friendship.query.filter(
-            (Friendship.user1_id == current_user.id) | (Friendship.user2_id == current_user.id)
-        ).all()
-
-        for friendship in friendships:
-            if friendship.user1_id == current_user.id:
-                friends_ids.add(friendship.user2_id)
-            else:
-                friends_ids.add(friendship.user1_id)
-
-        for other_user in users:
-            if other_user.id != current_user.id and other_user.id not in friends_ids:
-                match_percentage = calculate_match(current_user, other_user)
-                matches.append({
-                    'username': other_user.username,
-                    'match_percentage': match_percentage,
-                    'id': other_user.id  # Ensure that 'id' is included here
-                })
-
-        matches.sort(key=lambda x: x['match_percentage'], reverse=True)
-        return matches
-
-
-
-        # Render the template with the filtered events and joined event IDs
+        # Render the template with the events and joined_event_ids
         return render_template('event_template.html', events=events, joined_event_ids=joined_event_ids)
 
     except sqlite3.Error as e:
         print(f"Database connection error: {e}")
         return "Database connection error", 500
+
+
+
 
 
 @app.route('/sign_out')

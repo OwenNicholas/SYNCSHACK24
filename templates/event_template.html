@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events</title>
-    <link rel="stylesheet" href="static/css/event.css"}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/event.css') }}">
 </head>
 <body>
     <h1>Events</h1>
+
 
     <!-- Form for date input -->
     <form method="GET" action="/events">
@@ -16,7 +17,11 @@
         <button type="submit">Filter</button>
     </form>
 
+
     <!-- Display events table -->
+    <div style="margin-top: 20px;">
+        <a href="{{ url_for('profile') }}" class="back-button" style="text-decoration: none; padding: 10px 20px; background-color: #007BFF; color: white; border: none; border-radius: 5px; cursor: pointer;">Back to Profile</a>
+    </div>
     <table border="1">
         <thead>
             <tr>
@@ -49,5 +54,6 @@
             {% endfor %}
         </tbody>
     </table>
+    
 </body>
 </html>
