@@ -1,53 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Roboto:wght@300;400&display=swap');
+
+
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to right, #0000FF, #7EC8E3);
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+   font-family: 'Roboto', sans-serif;
+   background: linear-gradient(to right, #6a11cb, #2575fc); /* Futuristic gradient background */
+   margin: 0;
+   padding: 0;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100vh;
+   color: #ffffff; /* White text for contrast */
 }
+
 
 .container {
-    width: 350px; /* Set a consistent width for the container */
-    padding: 30px; /* Add padding around the content */
-    background-color: #fff; /* Set the background color to white */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow for depth */
-    text-align: center;
-    border-radius: 10px; /* Rounded corners for the container */
+   width: 350px;
+   padding: 30px;
+   background: rgba(0, 0, 0, 0.8); /* Transparent dark background */
+   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Strong shadow for depth */
+   text-align: center;
+   border-radius: 20px; /* Rounded corners */
+   position: relative;
+   border: 2px solid rgba(255, 255, 255, 0.1); /* Subtle border */
 }
-
 
 
 label {
-    display: block;
-    margin-bottom: 10px; /* Space below label */
-    font-size: 14px;
-    text-align: center; /* Center-align label text */
+   display: block;
+   margin-bottom: 10px;
+   font-size: 16px;
+   text-align: center;
+   color: #aaaaaa; /* Lighter color for label */
+   font-family: 'Orbitron', sans-serif; /* Futuristic font */
+   text-transform: uppercase; /* Uppercase for a futuristic feel */
 }
+
 
 select {
-    width: 100%; /* Full width of the container */
-    padding: 10px;
-    border: 2px solid #0000FF; /* Blue border */
-    border-radius: 5px;
-    font-size: 16px;
-    box-sizing: border-box; /* Include padding and border in element's total width */
-    margin-bottom: 20px; /* Space below the dropdown */
+   width: 100%;
+   padding: 12px;
+   border: none;
+   border-radius: 10px;
+   font-size: 16px;
+   background: rgba(255, 255, 255, 0.1); /* Transparent input background */
+   color: #ffffff; /* White text */
+   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow inside the input */
+   margin-bottom: 20px;
 }
+
+
+select:focus {
+   outline: none;
+   box-shadow: 0 4px 15px rgba(255, 255, 255, 0.5); /* Glow effect on focus */
+}
+
 
 button {
-    background: linear-gradient(to right, #6a11cb, #2575cf); /* Gradient for the button */
-    color: #fff;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%; /* Full width of the container */
-    font-size: 16px;
+   background: linear-gradient(to right, #6a11cb, #2575fc); /* Gradient for the button */
+   color: white;
+   padding: 12px;
+   border: none;
+   border-radius: 25px; /* Rounded corners */
+   cursor: pointer;
+   width: 100%;
+   font-size: 16px;
+   text-transform: uppercase; /* Uppercase for a futuristic feel */
+   font-weight: bold;
+   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Button shadow */
+   transition: all 0.3s ease;
 }
 
+
 button:hover {
-    background: linear-gradient(to right, #2575cf, #6a11cb); /* Hover effect */
+   background: linear-gradient(to right, #2575fc, #6a11cb); /* Inverted gradient on hover */
+   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Stronger shadow on hover */
 }
+
+
+/* Neon border effect */
+.container::before {
+   content: '';
+   position: absolute;
+   top: -4px;
+   left: -4px;
+   right: -4px;
+   bottom: -4px;
+   background: linear-gradient(to right, #6a11cb, #2575fc); /* Matching gradient */
+   border-radius: 25px;
+   z-index: -1;
+   filter: blur(10px);
+   opacity: 0.8;
+}
+
+
+
+
+Q2
+

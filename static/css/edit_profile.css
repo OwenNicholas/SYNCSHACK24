@@ -1,21 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Roboto:wght@300;400&display=swap');
+
+
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #0000FF, #7EC8E3);
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to bottom, #6a11cb, #2575fc); /* Updated gradient for a futuristic look */
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    color: #ffffff; /* White text for better contrast */
 }
 
 .profile-container {
-    background: white;
+    background: rgba(0, 0, 0, 0.8); /* Dark, transparent background */
     width: 400px;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Strong shadow for depth */
     position: relative;
+    border: 2px solid rgba(255, 255, 255, 0.1); /* Subtle border */
 }
 
 .profile-header {
@@ -28,12 +33,15 @@ body {
 .profile-header h2 {
     margin: 0;
     font-size: 24px;
-    color: #333;
+    color: #ffffff; /* White text for header */
+    font-family: 'Orbitron', sans-serif; /* Futuristic font */
+    text-transform: uppercase; /* Uppercase for emphasis */
+    letter-spacing: 2px; /* Increased letter spacing */
 }
 
 .close-btn {
     font-size: 24px;
-    color: #333;
+    color: #ffffff; /* White color for the close button */
     cursor: pointer;
 }
 
@@ -77,14 +85,33 @@ body {
 .profile-form select {
     width: 95%;
     padding: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+    color: #aaaaaa; /* Lighter color for labels */
     border: 2px solid #2575fc;
     border-radius: 5px;
     font-size: 14px;
 }
 
-.profile-form input[type="text"][readonly] {
-    background-color: #f5f5f5;
+.profile-form textarea {
+    width: calc(100% - 20px);
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    background: rgba(255, 255, 255, 0.1); /* Transparent input background */
+    color: #ffffff; /* White text */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow inside the input */
+}
+
+.profile-form input:focus,
+.profile-form textarea:focus {
+    outline: none;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.5); /* Glow effect on focus */
+}
+
+textarea {
+    resize: none; /* Disable resize */
+    height: 100px; /* Set a height for the textarea */
 }
 
 .form-buttons {
@@ -93,28 +120,34 @@ body {
     margin-top: 20px;
 }
 
-.cancel-btn, .save-btn {
+.back-btn, .save-btn  {
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
+    padding: 12px 20px;
+    border-radius: 25px; /* Rounded corners for buttons */
     font-size: 14px;
     cursor: pointer;
+    font-family: 'Orbitron', sans-serif; /* Futuristic font */
+    text-transform: uppercase; /* Uppercase for emphasis */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Button shadow */
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
 }
 
-.cancel-btn {
-    background-color: #ccc;
-    color: #333;
+.back-btn {
+    background-color: #333; /* Dark background for back button */
+    color: #ffffff; /* White text */
 }
 
 .save-btn {
-    background-color: #2575fc;
-    color: white;
+    background: linear-gradient(to right, #6a11cb, #2575fc); /* Gradient for save button */
+    color: #ffffff;
 }
 
-.cancel-btn:hover {
-    background-color: #b3b3b3;
+.back-btn:hover {
+    background-color: #555; /* Lighter shade on hover */
 }
 
 .save-btn:hover {
-    background-color: #6a11cb;
+    background: linear-gradient(to right, #2575fc, #6a11cb); /* Inve */
 }
